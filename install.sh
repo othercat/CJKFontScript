@@ -42,6 +42,7 @@ fi
 else
 	echo "PlistFileRegX exists."
 fi
+chmod +x ${PlistFileRegx}
 
 #=======================================
 # Backup phase for plists
