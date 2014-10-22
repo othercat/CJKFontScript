@@ -2,13 +2,13 @@
 #   Source Hans Sans Deployment Script,
 #   Get OS X's default CJK GUI font replaced into Source Han Sans.
 #
-#   @(#)  Repleace System Fallbacks Font to SourceHans TC in the project plist.
+#   @(#)  Repleace System Fallbacks Font to Source Han Sans in the project plist.
 #   Note: The project plist could be in directory "Resources" or the project root.
 #         Personally, I avoid clutter in the project root.
 #               
 # Enjoy! othercat@gmail.com verified with OSX Yosemite at 10/21/2014
 #
-# Found here: http://shikisuen.github.io/OSXCJKFontPlists/
+# Found here: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 # Set the paths to the build and settings Plist
 
 cdir=$(cd "$(dirname "$0")"; pwd) #current dir
@@ -28,7 +28,7 @@ fi
 rm -f ${cdir}/SourceHanSans.ttc
 
 #============================================
-# Download PlistFileRegX; added by ShikiSuen
+# Download PlistFileRegX
 #============================================
 cd ${cdir}
 if [ ! -f ${PlistFileRegx} ]
