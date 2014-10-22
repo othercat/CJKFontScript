@@ -9,5 +9,5 @@ ALl of these scripts needs to run with `sudo` to gain administrative permissions
 plistFileRegx binary from <https://github.com/othercat/PlistFileRegx>
 
 
-Please take reference from <http://shikisuen.github.io/OSXCJKFontPlists/>
+Please take reference from:<br><http://shikisuen.github.io/OSXCJKFontPlists/><br><http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html>
 
