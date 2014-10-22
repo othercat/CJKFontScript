@@ -1,9 +1,10 @@
 CJKFontScript
 =============
+run `install_Hiragino.sh`	or `install_SHS.sh` to run installer scripts by Terminal.
 
-install.sh to install
+run `restore.sh` to restore fonts and settings from the backups created by installer scripts.
 
-restore.sh to restore 
+ALl of these scripts needs to run with `sudo` to gain administrative permissions.
 
 plistFileRegx binary from <https://github.com/othercat/PlistFileRegx>
 
