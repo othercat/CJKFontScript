@@ -1,6 +1,8 @@
 CJKFontScript
 =============
 
+<b>All of these scripts here were tested by Shiki Suen at 2014-October-24.</b>
+
 run `install_Hiragino.sh`	or `install_SHS.sh` to run installer scripts by Terminal.
 
 run `restore.sh` to restore fonts and settings from the backups created by installer scripts.
