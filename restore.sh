@@ -5,7 +5,10 @@
 #   Note: The project plist could be in directory "Resources" or the project root.
 #         Personally, I avoid clutter in the project root.
 #               
-# Enjoy! othercat@gmail.com verified with OSX Yosemite at 10/21/2014
+# Enjoy! 
+# Original Script for SHS was composed by Richard Othercat Lee, Modified by Shiki Suen
+#
+# Tested by Shiki Suen on Oct 24, 2014.
 #
 # Found here: http://shikisuen.github.io/OSXCJKFontPlists/
 # Set the paths to the build and settings Plist
@@ -64,8 +67,8 @@ chmod 644 ${SystemFontsPath}/STHeiti\ Thin.ttc
 cp ${BackupPath}/STHeiti\ UltraLight.ttc ${SystemFontsPath}/STHeiti\ UltraLight.ttc
 chown root:wheel ${SystemFontsPath}/STHeiti\ UltraLight.ttc
 chmod 644 ${SystemFontsPath}/STHeiti\ UltraLight.ttc
-cp ${BackupPath}/华文细黑.ttc  /Library/Fonts/华文细黑.ttc
-cp ${BackupPath}/华文黑体.ttc  /Library/Fonts/华文黑体.ttc
+cp ${BackupPath}/"华文细黑.ttf"  /Library/Fonts/"华文细黑.ttf"
+cp ${BackupPath}/"华文黑体.ttf"  /Library/Fonts/"华文黑体.ttf"
 
 killall Finder
 atsutil databases -remove

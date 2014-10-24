@@ -6,8 +6,10 @@
 #   Note: The project plist could be in directory "Resources" or the project root.
 #         Personally, I avoid clutter in the project root.
 #               
-# Enjoy! ShikiSuen verified with OSX Yosemite at 10/22/2014
+# Enjoy! 
 # Original Script for SHS was composed by Richard Othercat Lee, Modified by Shiki Suen
+#
+# Tested by Shiki Suen on Oct 24, 2014.
 #
 # Found here: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 # Set the paths to the build and settings Plist
@@ -71,22 +73,22 @@ fi
 # Copy Hiragino Fonts into Correct Folder with Correct System Permission
 #========================================================================
 
-if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W3.otf"] 
+if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W3.otf" ];
 then
 	cp "/Library/Fonts/Hiragino Sans GB W3.otf" ${SystemFontsPath}/"Hiragino Sans GB W3.otf"
 fi
 
-if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W6.otf"] 
+if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W6.otf" ];
 then
 	cp "/Library/Fonts/Hiragino Sans GB W6.otf" ${SystemFontsPath}/"Hiragino Sans GB W6.otf"
 fi
 
-if [ ! -d ${SystemFontsPath}/"ヒラギノ角ゴ Pro W3.otf"] 
+if [ ! -d ${SystemFontsPath}/"ヒラギノ角ゴ Pro W3.otf" ];
 then
 	cp "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf" ${SystemFontsPath}/"ヒラギノ角ゴ Pro W3.otf"
 fi
 
-if [ ! -d ${SystemFontsPath}/"ヒラギノ角ゴ Pro W6.otf"] 
+if [ ! -d ${SystemFontsPath}/"ヒラギノ角ゴ Pro W6.otf" ];
 then
 	cp "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" ${SystemFontsPath}/"ヒラギノ角ゴ Pro W6.otf"
 fi
@@ -139,8 +141,8 @@ mv -fv ${SystemFontsPath}/STHeiti\ Light.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ Medium.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ Thin.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ UltraLight.ttc ${BackupPath}/
-mv -fv /Library/Fonts/华文细黑.ttc ${BackupPath}/
-mv -fv /Library/Fonts/华文黑体.ttc ${BackupPath}/
+mv -fv "/Library/Fonts/华文细黑.ttf" ${BackupPath}/
+mv -fv "/Library/Fonts/华文黑体.ttf" ${BackupPath}/
 
 #=============================================================
 # Clean Font Cache and Force Reboot
