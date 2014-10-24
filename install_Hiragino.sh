@@ -72,18 +72,22 @@ fi
 #========================================================================
 
 if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W3.otf"] 
+then
 	cp "/Library/Fonts/Hiragino Sans GB W3.otf" ${SystemFontsPath}/"Hiragino Sans GB W3.otf"
 fi
 
 if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W6.otf"] 
+then
 	cp "/Library/Fonts/Hiragino Sans GB W6.otf" ${SystemFontsPath}/"Hiragino Sans GB W6.otf"
 fi
 
 if [ ! -d ${SystemFontsPath}/"ヒラギノ角ゴ Pro W3.otf"] 
+then
 	cp "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf" ${SystemFontsPath}/"ヒラギノ角ゴ Pro W3.otf"
 fi
 
 if [ ! -d ${SystemFontsPath}/"ヒラギノ角ゴ Pro W6.otf"] 
+then
 	cp "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" ${SystemFontsPath}/"ヒラギノ角ゴ Pro W6.otf"
 fi
 
