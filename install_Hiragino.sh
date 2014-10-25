@@ -133,11 +133,12 @@ ${PlistFileRegx} EntireString "STHeitiSC-Light" "HiraginoSansGB-W3" ${WorkingDir
 chown root:wheel ${WorkingDirectory}/DefaultFontFallbacks.plist
 chmod 644 ${WorkingDirectory}/DefaultFontFallbacks.plist
 
+echo -e "====================================\nWe have to kill Finder, clean the font cache and reboot your Mac. \nPlease restart all applications running after this reboot.\n------------------------------------\nPress any key to continue; "
+read
+
 #=============================================================
 # Force Chronosphere SinoType Gothic Fonts into Backup Folder
 #=============================================================
-echo "Press any key to kill Finder,clean the font cache and reboot your Mac."
-read
 killall Finder
 mv -fv ${SystemFontsPath}/STHeiti\ Light.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ Medium.ttc ${BackupPath}/

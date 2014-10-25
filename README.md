@@ -1,7 +1,11 @@
 CJKFontScript
 =============
 
-<b>All of these scripts here were tested by Shiki Suen at 2014-October-24.</b>
+<b>All of these scripts here were tested by Shiki Suen at 2014-October-25.</b>
+
+Please make sure your plists are factorial before running these installer scripts.
+
+<b>The installer script must put into a directory which doesn't have any space.</b><br>(This is an issue under investigation)
 
 run `install_Hiragino.sh`	or `install_SHS.sh` to run installer scripts by Terminal.
 

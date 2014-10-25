@@ -70,8 +70,9 @@ chmod 644 ${SystemFontsPath}/STHeiti\ UltraLight.ttc
 cp ${BackupPath}/"华文细黑.ttf"  /Library/Fonts/"华文细黑.ttf"
 cp ${BackupPath}/"华文黑体.ttf"  /Library/Fonts/"华文黑体.ttf"
 
-echo "Press any key to kill Finder,clean the font cache and reboot your Mac."
+echo -e "====================================\nWe have to kill Finder, clean the font cache and reboot your Mac. \nPlease restart all applications running after this reboot.\n------------------------------------\nPress any key to continue; "
 read
+
 killall Finder
 atsutil databases -remove
 reboot
