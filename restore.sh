@@ -6,7 +6,7 @@
 #         Personally, I avoid clutter in the project root.
 #               
 # Enjoy! 
-# Original Script for SHS was composed by Richard Othercat Lee, Modified by Shiki Suen
+# Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #
 # Tested by Shiki Suen on Oct 24, 2014.
 #
@@ -70,6 +70,8 @@ chmod 644 ${SystemFontsPath}/STHeiti\ UltraLight.ttc
 cp ${BackupPath}/"华文细黑.ttf"  /Library/Fonts/"华文细黑.ttf"
 cp ${BackupPath}/"华文黑体.ttf"  /Library/Fonts/"华文黑体.ttf"
 
+echo "Press any key to kill Finder,clean the font cache and reboot your Mac."
+read
 killall Finder
 atsutil databases -remove
 reboot
