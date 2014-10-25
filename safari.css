@@ -1,0 +1,11 @@
+body {-webkit-font-smoothing: subpixel-antialiased !important; }
+
+@font-face {
+font-family: sans-serif;
+src: local("Helvetica");
+}
+
+@font-face {
+font-family: serif;
+src: local("Times");
+}
