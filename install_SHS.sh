@@ -129,6 +129,9 @@ chmod 644 ${WorkingDirectory}/DefaultFontFallbacks.plist
 #=============================================================
 # Force Chronosphere SinoType Gothic Fonts into Backup Folder
 #=============================================================
+echo "Press any key to kill Finder,clean the font cache and reboot your Mac."
+read
+killall Finder
 mv -fv ${SystemFontsPath}/STHeiti\ Light.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ Medium.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ Thin.ttc ${BackupPath}/
@@ -139,8 +142,5 @@ mv -fv "/Library/Fonts/华文黑体.ttf" ${BackupPath}/
 #=============================================================
 # Clean Font Cache and Force Reboot
 #=============================================================
-echo "Press any key to kill Finder,clean the font cache and reboot your Mac."
-read
-killall Finder
 atsutil databases -remove
 reboot
