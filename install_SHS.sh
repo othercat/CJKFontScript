@@ -9,18 +9,19 @@
 # Enjoy! 
 # Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #
-# Tested by Shiki Suen on Oct 24, 2014.
+# Tested by Shiki Suen on Oct 25, 2014.
 #
 # Found here: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 # Set the paths to the build and settings Plist
 
 cdir=$(cd "$(dirname "$0")"; pwd) #current dir
+fdrGarage="${HOME}/.FontInstallerTemporaryWorkingDir"
 PlistBuddy="/usr/libexec/PlistBuddy"
 Plutil="plutil"
 PlistFileRegx="./plistFileRegx"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
-#WorkingDirectory="${cdir}/ori"
+#RestoreDirectory="${cdir}/ori"
 WorkingDirectory="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
 
 if [ $(id -u) != 0 ]; then
@@ -28,12 +29,20 @@ if [ $(id -u) != 0 ]; then
 	exit
 fi
 
-rm -f ${cdir}/SourceHanSans.ttc
+#============================================
+# Create Working Directory
+#============================================
+
+if [ ! -d ${fdrGarage} ]
+then
+	echo "Making directory ${fdrGarage}."
+	mkdir ${fdrGarage}
+fi
 
 #============================================
 # Download PlistFileRegX
 #============================================
-cd ${cdir}
+cd ${fdrGarage}
 if [ ! -f ${PlistFileRegx} ]
 then
 	curl -L https://github.com/othercat/CJKFontScript/raw/master/plistFileRegx\?raw\=true -o ${PlistFileRegx}
@@ -75,14 +84,14 @@ fi
 # Source Han Sans Download and Install with Correct System Permission
 #=====================================================================
 
-cd ${cdir}
+cd ${fdrGarage}
 curl -L https://github.com/adobe-fonts/source-han-sans/blob/release/SuperOTC/SourceHanSans.ttc.zip\?raw\=true | bsdtar -xvf-
-if [ ! -f ${cdir}/SourceHanSans.ttc ]
+if [ ! -f ${fdrGarage}/SourceHanSans.ttc ]
 then
 	echo "Fail to download font file."
 	exit
 fi
-cp ${cdir}/SourceHanSans.ttc ${SystemFontsPath}/
+cp ${fdrGarage}/SourceHanSans.ttc ${SystemFontsPath}/
 chown root:wheel ${SystemFontsPath}/SourceHanSans.ttc
 chmod 644 ${SystemFontsPath}/SourceHanSans.ttc
 
@@ -126,7 +135,7 @@ ${PlistFileRegx} EntireString "HiraKakuProN-W3" "SourceHanSans-Regular" ${Workin
 chown root:wheel ${WorkingDirectory}/DefaultFontFallbacks.plist
 chmod 644 ${WorkingDirectory}/DefaultFontFallbacks.plist
 
-echo -e "====================================\nWe have to kill Finder, clean the font cache and reboot your Mac. \nPlease restart all applications running after this reboot.\n------------------------------------\nPress any key to continue; "
+echo -e "====================================\nWe have to kill Finder, clean the font cache and reboot your Mac. \nPlease restart all applications running after this reboot.\n------------------------------------\nPress any key to continue:\c "
 read
 
 #=============================================================
@@ -139,6 +148,11 @@ mv -fv ${SystemFontsPath}/STHeiti\ Thin.ttc ${BackupPath}/
 mv -fv ${SystemFontsPath}/STHeiti\ UltraLight.ttc ${BackupPath}/
 mv -fv "/Library/Fonts/华文细黑.ttf" ${BackupPath}/
 mv -fv "/Library/Fonts/华文黑体.ttf" ${BackupPath}/
+
+#=============================================================
+# Remove Working Directory
+#=============================================================
+rm -f ${fdrGarage}
 
 #=============================================================
 # Clean Font Cache and Force Reboot
