@@ -24,5 +24,5 @@ sudo chown root:wheel /System/Library/Frameworks/CoreText.framework/Versions/A/R
 sudo chmod 644 /System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist
 sudo atsutil databases -remove
 rm -rf "~/.FactorialCJKFontSettingsBackup"
-rm -rf "~/.FontInstallerTemporaryWorkingDir"
+rm -rf "/tmp/.FontInstallerTemporaryWorkingDir"
 sudo reboot
