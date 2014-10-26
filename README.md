@@ -40,7 +40,7 @@ Major Update History
 These bug fixes were introduced regarding to the First "Stable" Release:
 
 1. We changed constant of PlistRegEx into variable to make sure PlistRegEx will be downloaded to the Working Directory, not the User Root folder `./`.
-2. MD5 CheckSum process of PlistRegEx introduced.
+2. MD5 CheckSum process of PlistRegEx has been introduced.
 3. Working Directory redefined as `/tmp/FontInstallationScriptSysPlistsDir/`.
 4. Mass fixes were introduced in order to avoid unpredictable errors like "script can not be executed under folders which contains `space` in their names".
 
