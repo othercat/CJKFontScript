@@ -3,7 +3,7 @@ CJKFontScript
 
 > <b>Please BE AWARE that Automatic De-Fib scripts were introduced since 2014Oct26(GMT+8),</b>
 
-> You should run Automatic De-Fib scripts before running installer scripts here <b>if one of following conditions have met</b>:
+> You should run Automatic De-Fib scripts before running installer scripts here <b>if one of the following conditions have met</b>:
 
 > - Font Fallbacks are not factorial (either modified or copied from elsewhere);<br>
 > // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice.
