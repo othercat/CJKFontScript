@@ -5,17 +5,21 @@ CJKFontScript
 
 > You should run Automatic De-Fib scripts before running installer scripts here <b>if one of following conditions have met</b>:
 
-> - Font Fallbacks are not factorial (either modified or copied from elsewhere);
-- STHeiti (Sinotype) is removed from your system.<br>(our scripts only move Sinotype Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
-> - De-fib Scripts matches system versions.<br>If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>the `restore.sh` should be your first choice.
+> - Font Fallbacks are not factorial (either modified or copied from elsewhere);<br>
+> // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice.
+- STHeiti (SinoType Sans) is removed from your system.<br>(our scripts only move SinoType Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
+
+> <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
+
+
 
 <b>All of these scripts here were tested by Shiki Suen at 2014-October-26, GMT+8.</b>
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
 
 Run `install_Hiragino.sh`	or `install_SHS.sh` to run installer scripts by Terminal,<br>
-(You should restart all of running applications after running these scripts,)<br>
-(or better close all applications except Terminal.)
+// You should restart all of running applications after running these scripts,<br>
+// or better close all applications except Terminal.
 
 Run `restore.sh` to restore fonts and settings from the backups created by installer scripts.
 
@@ -26,10 +30,10 @@ ALl of these scripts need to run with `sudo` to gain administrative permissions.
 
 The `safari.css` could be used if you want Safari follows system's font fallback settings.
 
-plistFileRegx binary from <https://github.com/othercat/PlistFileRegx>
+PlistFileRegx binary's Source Code: <https://github.com/othercat/PlistFileRegx>
 
 
-Please also take reference from:<br><http://shikisuen.github.io/OSXCJKFontPlists/><br><http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html>
+Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlists/><br><http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html>
 
 Update History
 =============
@@ -38,8 +42,8 @@ Compare to initial release, these bug fixes are introduced in recent days:
 
 - Automatic De-Fib scripts have been introduced since this update, and will be updated if new factorial scripts are shipped with further Yosemite updates.
 - The previous version of those installer scripts use their current
-directory as working directory, this may cause serious failure of downloading PlistRegEx and Source Han Sans correctly. We Fixed this issue by building a specific temporary working directory, and this directory will be removed if these new installer scripts
-finished their job.
+directories as working directory, this may cause serious failure of downloading PlistRegEx and Source Han Sans correctly. We Fixed this issue by building a specific temporary working directory, and this directory will be removed if these new installer scripts
+get their job finished.
 - Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts`) correctly.
 - Comments are written neatly among Installer Scripts and `restore.sh`.
 - In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
