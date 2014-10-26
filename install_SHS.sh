@@ -9,11 +9,22 @@
 # Enjoy! 
 # Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #
-# Tested by Shiki Suen on Oct 25, 2014.
+# Tested by Shiki Suen on Oct 26, 2014, GMT+8.
 #
-# Found here: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
+# Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 # Set the paths to the build and settings Plist
 
+#============================================
+# Permission Requirements
+#============================================
+if [ $(id -u) != 0 ]; then
+	echo "Please use SUDO command to execute this BASH script."
+	exit
+fi
+
+#============================================
+# Public Instant Variables
+#============================================
 cdir=$(cd "$(dirname "$0")"; pwd) #current dir
 fdrGarage="${HOME}/.FontInstallerTemporaryWorkingDir"
 PlistBuddy="/usr/libexec/PlistBuddy"
@@ -21,21 +32,14 @@ Plutil="plutil"
 PlistFileRegx="./plistFileRegx"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
-#RestoreDirectory="${cdir}/ori"
-WorkingDirectory="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
-
-if [ $(id -u) != 0 ]; then
-	echo "Please use sudo to execute the script"
-	exit
-fi
+WorkingDirectory="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources"
 
 #============================================
 # Create Working Directory
 #============================================
-
 if [ ! -d ${fdrGarage} ]
 then
-	echo "Making directory ${fdrGarage}."
+	echo "Making Working directory ${fdrGarage}."
 	mkdir ${fdrGarage}
 fi
 
@@ -59,31 +63,27 @@ chmod +x ${PlistFileRegx}
 #=======================================
 # Backup phase for plists
 #=======================================
-
 if [ ! -d ${BackupPath} ]
 then
-	echo "Making directory ${BackupPath}."
+	echo "Making Backup directory ${BackupPath}."
 	mkdir ${BackupPath}
 fi
 
 if [ -f ${BackupPath}/CTPresetFallbacks.plist.bak ];
 then
-   cp ${WorkingDirectory}/CTPresetFallbacks.plist   ${BackupPath}/CTPresetFallbacks.plist.`date +%Y%m%d_%H%M%S`.bak
-else
-   cp ${WorkingDirectory}/CTPresetFallbacks.plist   ${BackupPath}/CTPresetFallbacks.plist.bak
+   mv ${BackupPath}/CTPresetFallbacks.plist.bak   ${BackupPath}/CTPresetFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak
 fi
+cp ${WorkingDirectory}/CTPresetFallbacks.plist   ${BackupPath}/CTPresetFallbacks.plist.bak
 
 if [ -f ${BackupPath}/DefaultFontFallbacks.plist.bak ];
 then
-   cp ${WorkingDirectory}/DefaultFontFallbacks.plist   ${BackupPath}/DefaultFontFallbacks.plist.`date +%Y%m%d_%H%M%S`.bak
-else
-   cp ${WorkingDirectory}/DefaultFontFallbacks.plist   ${BackupPath}/DefaultFontFallbacks.plist.bak
+   mv ${BackupPath}/DefaultFontFallbacks.plist.bak   ${BackupPath}/DefaultFontFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak
 fi
+cp ${WorkingDirectory}/DefaultFontFallbacks.plist   ${BackupPath}/DefaultFontFallbacks.plist.bak
 
 #=====================================================================
 # Source Han Sans Download and Install with Correct System Permission
 #=====================================================================
-
 cd ${fdrGarage}
 curl -L https://github.com/adobe-fonts/source-han-sans/blob/release/SuperOTC/SourceHanSans.ttc.zip\?raw\=true | bsdtar -xvf-
 if [ ! -f ${fdrGarage}/SourceHanSans.ttc ]
@@ -98,9 +98,7 @@ chmod 644 ${SystemFontsPath}/SourceHanSans.ttc
 #========================================
 # Convert phase: CTPresetFallbacks.plist
 #========================================
-
 Plutil -convert xml1 ${WorkingDirectory}/CTPresetFallbacks.plist
-
 ${PlistFileRegx} "-Bold" "Font-Medium" "Font-Bold" ${WorkingDirectory}/CTPresetFallbacks.plist
 ${PlistFileRegx} "-Heavy" "Font-Medium" "Font-Heavy" ${WorkingDirectory}/CTPresetFallbacks.plist
 ${PlistFileRegx} "-Heavy" "Font-Bold" "Font-Heavy" ${WorkingDirectory}/CTPresetFallbacks.plist
@@ -113,16 +111,13 @@ ${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" "SourceHanSansTC" $
 ${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" "SourceHanSansSC" ${WorkingDirectory}/CTPresetFallbacks.plist
 ${PlistFileRegx} EntireString ".AppleKoreanFont" "SourceHanSansK" ${WorkingDirectory}/CTPresetFallbacks.plist
 ${PlistFileRegx} EntireString ".AppleJapaneseFont" "SourceHanSans" ${WorkingDirectory}/CTPresetFallbacks.plist
-
 chown root:wheel ${WorkingDirectory}/CTPresetFallbacks.plist
 chmod 644 ${WorkingDirectory}/CTPresetFallbacks.plist
 
 #===========================================
 # Convert phase: DefaultFontFallbacks.plist
 #===========================================
-
 Plutil -convert xml1 ${WorkingDirectory}/DefaultFontFallbacks.plist
-
 ${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" "SourceHanSansTC" ${WorkingDirectory}/DefaultFontFallbacks.plist
 ${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" "SourceHanSansSC" ${WorkingDirectory}/DefaultFontFallbacks.plist
 ${PlistFileRegx} EntireString ".AppleKoreanFont" "SourceHanSansK" ${WorkingDirectory}/DefaultFontFallbacks.plist
@@ -131,28 +126,30 @@ ${PlistFileRegx} EntireString "STHeitiTC-Light" "SourceHanSansTC-Regular" ${Work
 ${PlistFileRegx} EntireString "STHeitiSC-Light" "SourceHanSansSC-Regular" ${WorkingDirectory}/DefaultFontFallbacks.plist
 ${PlistFileRegx} EntireString "AppleSDGothicNeo-Regular" "SourceHanSansK-Regular" ${WorkingDirectory}/DefaultFontFallbacks.plist
 ${PlistFileRegx} EntireString "HiraKakuProN-W3" "SourceHanSans-Regular" ${WorkingDirectory}/DefaultFontFallbacks.plist
-
 chown root:wheel ${WorkingDirectory}/DefaultFontFallbacks.plist
 chmod 644 ${WorkingDirectory}/DefaultFontFallbacks.plist
 
-echo -e "====================================\nWe have to kill Finder, clean the font cache and reboot your Mac. \nPlease restart all applications running after this reboot.\n------------------------------------\nPress any key to continue:\c "
+#===========================================
+# Killing Finder
+#===========================================
+echo -e "====================================\nWe have to kill Finder, clean the font cache and reboot your Mac. \nPlease restart all applications running after this reboot.\n------------------------------------\nPress ENTER(RETURN) key to continue:\c "
 read
+killall Finder
 
 #=============================================================
 # Force Chronosphere SinoType Gothic Fonts into Backup Folder
 #=============================================================
-killall Finder
-mv -fv ${SystemFontsPath}/STHeiti\ Light.ttc ${BackupPath}/
-mv -fv ${SystemFontsPath}/STHeiti\ Medium.ttc ${BackupPath}/
-mv -fv ${SystemFontsPath}/STHeiti\ Thin.ttc ${BackupPath}/
-mv -fv ${SystemFontsPath}/STHeiti\ UltraLight.ttc ${BackupPath}/
-mv -fv "/Library/Fonts/华文细黑.ttf" ${BackupPath}/
-mv -fv "/Library/Fonts/华文黑体.ttf" ${BackupPath}/
+mv -fv ${SystemFontsPath}/STHeiti\ Light.ttc ${BackupPath}/STHeiti\ Light.ttc.bak
+mv -fv ${SystemFontsPath}/STHeiti\ Medium.ttc ${BackupPath}/STHeiti\ Medium.ttc.bak
+mv -fv ${SystemFontsPath}/STHeiti\ Thin.ttc ${BackupPath}/STHeiti\ Thin.ttc.bak
+mv -fv ${SystemFontsPath}/STHeiti\ UltraLight.ttc ${BackupPath}/STHeiti\ UltraLight.ttc.bak
+mv -fv "/Library/Fonts/华文细黑.ttf" ${BackupPath}/KabunGothic-Light.ttf.bak
+mv -fv "/Library/Fonts/华文黑体.ttf" ${BackupPath}/KabunGothic-Medium.ttf.bak
 
 #=============================================================
 # Remove Working Directory
 #=============================================================
-rm -f ${fdrGarage}
+rm -rf ${fdrGarage}/
 
 #=============================================================
 # Clean Font Cache and Force Reboot
