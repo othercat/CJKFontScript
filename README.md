@@ -38,7 +38,7 @@ Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlist
 Update History
 =============
 ####2014Oct26(GMT+8), First Stable Release####
-Compare to initial release, these bug fixes were introduced in recent days:
+These bug fixes were introduced in recent days since this Git Project Starts:
 
 - Automatic De-Fib scripts have been introduced since this update, and will be updated if new factorial scripts are shipped with further Yosemite updates.
 - The previous version of those installer scripts use their current
