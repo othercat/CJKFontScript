@@ -44,12 +44,12 @@ These bug fixes were introduced in recent days since this Git Project Starts:
 - The previous version of those installer scripts use their current
 directories as working directory, this may cause serious failure of downloading PlistRegEx and Source Han Sans correctly. We Fixed this issue by building a specific temporary working directory, and this directory will be removed if these new installer scripts
 get their job finished.
-- Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts`) correctly.
+- Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts/`) correctly.
 - Comments are written neatly among Installer Scripts and `restore.sh`.
 - In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
 - Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cash + force-reboot".
 - Safari CSS file is introduced to let Apple Safari follows system's font fallback settings.
-- We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts` to System Font Folder.
+- We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts/` to System Font Folder.
 - The Installer Scripts now also translate `DefaultFontfallbacks.plist` into XML format before applying modifications.
 
 [END].
