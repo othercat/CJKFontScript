@@ -49,7 +49,7 @@ get their job finished.
 - In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
 - Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cash + force-reboot".
 - Safari CSS file is introduced to let Apple Safari follows system's font fallback settings.
-- All of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts` to System Font Folder.
+- We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts` to System Font Folder.
 - The Installer Scripts now also translate `DefaultFontfallbacks.plist` into XML format before applying modifications.
 
 [END].
