@@ -6,7 +6,7 @@ CJKFontScript
 > You should run Automatic De-Fib scripts (in `AEDKit` folder) before running installer scripts here <b>if one of the following conditions have met</b>:
 
 > - Font Fallbacks are not factorial (either modified or copied from elsewhere);<br>
-> // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice.
+> // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice (unless your backups are removed).
 - STHeiti (SinoType Sans) is removed from your system.<br>(our scripts only move SinoType Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
 
 > <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
