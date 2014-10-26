@@ -22,7 +22,7 @@ Run `install_Hiragino.sh`	or `install_SHS.sh` to run installer scripts by Termin
 
 Run `restore.sh` to restore fonts and settings from the backups created by installer scripts.
 
-ALl of these scripts need to run with `sudo` to gain administrative permissions.
+All of these scripts need to run with `sudo` to gain administrative permissions.
 
 <b>Always follow the following rule to run these scripts by Terminal</b>:
 <pre><code>sudo bash XXXXXXXX.sh</code></pre>
