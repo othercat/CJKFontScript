@@ -9,7 +9,7 @@
 # Enjoy! 
 # Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #
-# Tested by Shiki Suen on Oct 26, 2014, GMT+8.
+# Tested by Shiki Suen on Oct 26, 2014, MST.
 #
 # Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 
