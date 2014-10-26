@@ -1,8 +1,10 @@
 CJKFontScript
 =============
 
-> <b>Please BE AWARE that Automatic De-Fib scripts were introduced since 2014Oct26(GMT+8),</b><br><br>
-> You should run Automatic De-Fib scripts before running installer scripts here <b>if one of following conditions have met</b>:<br>
+> <b>Please BE AWARE that Automatic De-Fib scripts were introduced since 2014Oct26(GMT+8),</b>
+
+> You should run Automatic De-Fib scripts before running installer scripts here <b>if one of following conditions have met</b>:
+
 > - Font Fallbacks are not factorial (either modified or copied from elsewhere);
 - STHeiti (Sinotype) is removed from your system.<br>(our scripts only move Sinotype Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
 > - De-fib Scripts matches system versions.<br>If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>the `restore.sh` should be your first choice.
@@ -31,7 +33,7 @@ Please also take reference from:<br><http://shikisuen.github.io/OSXCJKFontPlists
 
 Update History
 =============
-####2014Oct26(GMT+8) //First Stable Release####
+####2014Oct26(GMT+8), First Stable Release####
 Compare to initial release, these bug fixes are introduced in recent days:
 
 - Automatic De-Fib scripts have been introduced since this update, and will be updated if new factorial scripts are shipped with further Yosemite updates.
