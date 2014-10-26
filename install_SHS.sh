@@ -99,7 +99,7 @@ cp ${WorkingDirectory}/DefaultFontFallbacks.plist   ${BackupPath}/DefaultFontFal
 cd "${fdrGarage}"
 rm -f "${fdrGarage}/SourceHanSans.ttc"
 curl -L https://github.com/adobe-fonts/source-han-sans/blob/release/SuperOTC/SourceHanSans.ttc.zip\?raw\=true | bsdtar -xvf-
-if [ ! -f "./SourceHanSans.ttc" ]
+if [ ! -f "${fdrGarage}/SourceHanSans.ttc" ]
 then
 	echo "Fail to download font file."
 	exit
