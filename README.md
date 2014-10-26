@@ -54,7 +54,7 @@ get their job finished.
 3. Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts/`) correctly.
 4. Comments are written neatly among Installer Scripts and `restore.sh`.
 5. In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
-6. Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cash + force-reboot".
+6. Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cache + force-reboot".
 7. Safari CSS file is introduced to let Apple Safari follows system's font fallback settings.
 8. We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts/` to System Font Folder.
 9. The Installer Scripts now also translate `DefaultFontfallbacks.plist` into XML format before applying modifications.
