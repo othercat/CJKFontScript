@@ -12,7 +12,7 @@ CJKFontScript
 > <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
 
 <b>Recent update "Tohma Kazusa" tested by Shiki Suen at 2014-October-26, MST.</b><br>
-Minor updates may introduced by Richard Li, please check commit list.
+Minor updates may introduced, please check commit list.
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
 
@@ -41,8 +41,9 @@ These bug fixes were introduced regarding to the First "Stable" Release:
 
 1. We changed constant of PlistRegEx into variable to make sure PlistRegEx will be downloaded to the Working Directory, not the User Root folder `./`.
 2. MD5 CheckSum process of PlistRegEx has been introduced.
-3. Working Directory redefined as `/tmp/FontInstallationScriptSysPlistsDir/`.
+3. Working Directory redefined as `/tmp/FontInstallationWorkingDir/`.
 4. Mass fixes were introduced in order to avoid unpredictable errors like "script can not be executed under folders which contains `space` in their names".
+5. AED(De-Fib) Scripts are now well-commented.
 
 ####2014Oct26(GMT+8) Wave 1, First Stable Release####
 These bug fixes were introduced in recent days since this Git Project Starts:

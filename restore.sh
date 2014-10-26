@@ -3,23 +3,17 @@
 #   Restore those backups made by installer scripts.
 #
 #   @(#)  Repleace System Fallbacks Font to SourceHans TC in the project plist.
-#   Note: The project plist could be in directory "Resources" or the project root.
-#         Personally, I avoid clutter in the project root.
-#               
-# Enjoy! 
-# Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
-#
-# Tested by Shiki Suen on Oct 26, 2014, MST.
-#
-# Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
-#
-# Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
+#   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
+#   Enjoy! 
+#   Tested by Shiki Suen on Oct 26, 2014, MST.
+#   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
+#   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
 #============================================
 # Public Instant Variables
 #============================================
 
-fdrGarage="/tmp/FontInstallationScriptSysPlistsDir"
+fdrGarage="/tmp/FontInstallationWorkingDir"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
 SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
