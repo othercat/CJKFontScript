@@ -11,9 +11,8 @@ CJKFontScript
 
 > <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
 
-
-
-<b>All of these scripts here were tested by Shiki Suen at 2014-October-26, GMT+8.</b>
+<b>Recent update "Tohma Kazusa" tested by Shiki Suen at 2014-October-26, MST.</b><br>
+Minor updates may introduced by Richard Li, please check commit list.
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
 
@@ -35,21 +34,29 @@ PlistFileRegx binary's Source Code: <https://github.com/othercat/PlistFileRegx>
 
 Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlists/><br><http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html>
 
-Update History
+Major Update History
 =============
-####2014Oct26(GMT+8), First Stable Release####
+####2014Oct26(MST) Wave 2, Codename "Tohma Kazusa"####
+These bug fixes were introduced regarding to the First "Stable" Release:
+
+1. We changed constant of PlistRegEx into variable to make sure PlistRegEx will be downloaded to the Working Directory, not the User Root folder `./`.
+2. MD5 CheckSum process of PlistRegEx introduced.
+3. Working Directory redefined as `/tmp/FontInstallationScriptSysPlistsDir/`.
+4. Mass fixes were introduced in order to avoid unpredictable errors like "script can not be executed under folders which contains `space` in their names".
+
+####2014Oct26(GMT+8) Wave 1, First Stable Release####
 These bug fixes were introduced in recent days since this Git Project Starts:
 
-- Automatic De-Fib scripts have been introduced since this update, and will be updated if new factorial scripts are shipped with further Yosemite updates.
-- The previous version of those installer scripts use their current
+1. Automatic De-Fib scripts have been introduced since this update, and will be updated if new factorial scripts are shipped with further Yosemite updates.
+2. The previous version of those installer scripts use their current
 directories as working directory, this may cause serious failure of downloading PlistRegEx and Source Han Sans correctly. We Fixed this issue by building a specific temporary working directory, and this directory will be removed if these new installer scripts
 get their job finished.
-- Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts/`) correctly.
-- Comments are written neatly among Installer Scripts and `restore.sh`.
-- In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
-- Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cash + force-reboot".
-- Safari CSS file is introduced to let Apple Safari follows system's font fallback settings.
-- We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts/` to System Font Folder.
-- The Installer Scripts now also translate `DefaultFontfallbacks.plist` into XML format before applying modifications.
+3. Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts/`) correctly.
+4. Comments are written neatly among Installer Scripts and `restore.sh`.
+5. In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
+6. Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cash + force-reboot".
+7. Safari CSS file is introduced to let Apple Safari follows system's font fallback settings.
+8. We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts/` to System Font Folder.
+9. The Installer Scripts now also translate `DefaultFontfallbacks.plist` into XML format before applying modifications.
 
 [END].

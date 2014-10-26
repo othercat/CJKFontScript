@@ -12,36 +12,36 @@
 # Tested by Shiki Suen on Oct 26, 2014, GMT+8.
 #
 # Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
-# Set the paths to the build and settings Plist
 
 #============================================
 # Public Instant Variables
 #============================================
 
-#cdir=$(cd "$(dirname "$0")"; pwd) #current dir
-fdrGarage="/tmp/FontInstallationScriptWorkingDirectory"
-Plutil="plutil"
-PlistFileRegx="./plistFileRegx"
-plisttoolhash="f4f6b442d93cda35a1aec25121318482"
+fdrGarage="/tmp/FontInstallationScriptSysPlistsDir"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
-WorkingDirectory="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources"
+SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
+Plutil="plutil"
+PlistFileRegx="${fdrGarage}/plistFileRegx"
+plisttoolhash="f4f6b442d93cda35a1aec25121318482"
 
 #============================================
 # Permission Requirements
 #============================================
+
 if [ $(id -u) != 0 ]; then
-	echo "Please use SUDO command to execute this BASH script."
+	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
 	exit
 fi
 
 #============================================
 # Create Working Directory
 #============================================
-if [ ! -d ${fdrGarage} ]
+
+if [ ! -d "${fdrGarage}" ]
 then
-	echo "Making Working directory ${fdrGarage}."
-	mkdir ${fdrGarage}
+	echo "[Making Working directory ${fdrGarage}.]"
+	mkdir "${fdrGarage}"
 fi
 
 #============================================
@@ -50,45 +50,47 @@ fi
 
 cd "${fdrGarage}"
 
-if [ -f ${PlistFileRegx} ] && [[ ! $(md5 -q ${PlistFileRegx}) = ${plisttoolhash} ]]
+if [ -f "${PlistFileRegx}" ] && [[ ! $(md5 -q "${PlistFileRegx}") = "${plisttoolhash}" ]]
 then
-    echo "MD5 Hash for local plistFileRegx does not match"
-	rm -f ${PlistFileRegx}
+    echo "[PlistFileRegx MD5 CheckSum ERROR and will be NUKED , Performing ReDOWNLOAD.]"
+	rm -f "${PlistFileRegx}"
 fi
 
-if [ ! -f ${PlistFileRegx} ]
+if [ ! -f "${PlistFileRegx}" ]
 then
-	curl -L https://github.com/othercat/CJKFontScript/raw/master/plistFileRegx\?raw\=true -o ${PlistFileRegx}
-	if [ ! -f ${PlistFileRegx} ]
+	curl -L "https://github.com/othercat/CJKFontScript/raw/master/plistFileRegx?raw=true" -o "${fdrGarage}/plistFileRegx"
+	if [ ! -f "${PlistFileRegx}" ]
 	then
-		echo "Fail to download plistRegEx file."
-	exit
+		echo "[Failed to download plistRegEx file, ABORT MISSION.]"
+		exit
 	fi
 fi
 
-chmod +x ${PlistFileRegx}
-
+chmod +x "${PlistFileRegx}"
 
 #=======================================
-# Backup phase for plists
+# Backup Plists
 #=======================================
-if [ ! -d ${BackupPath} ]
+
+if [ ! -d "${BackupPath}" ]
 then
-	echo "Making Backup directory ${BackupPath}."
-	mkdir ${BackupPath}
+	echo "[Making Backup directory ${BackupPath}.]"
+	mkdir "${BackupPath}"
 fi
 
-if [ -f ${BackupPath}/CTPresetFallbacks.plist.bak ];
+if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ];
 then
-   mv ${BackupPath}/CTPresetFallbacks.plist.bak   ${BackupPath}/CTPresetFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak
+   mv "${BackupPath}/CTPresetFallbacks.plist.bak" "${BackupPath}/CTPresetFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
 fi
-cp ${WorkingDirectory}/CTPresetFallbacks.plist   ${BackupPath}/CTPresetFallbacks.plist.bak
 
-if [ -f ${BackupPath}/DefaultFontFallbacks.plist.bak ];
+cp "${SysPlistsDir}/CTPresetFallbacks.plist" "${BackupPath}/CTPresetFallbacks.plist.bak"
+
+if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ];
 then
-   mv ${BackupPath}/DefaultFontFallbacks.plist.bak   ${BackupPath}/DefaultFontFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak
+   mv "${BackupPath}/DefaultFontFallbacks.plist.bak" "${BackupPath}/DefaultFontFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
 fi
-cp ${WorkingDirectory}/DefaultFontFallbacks.plist   ${BackupPath}/DefaultFontFallbacks.plist.bak
+
+cp "${SysPlistsDir}/DefaultFontFallbacks.plist" "${BackupPath}/DefaultFontFallbacks.plist.bak"
 
 #========================================================================
 # Check Existence of Factorial Hiragino Fonts
@@ -96,25 +98,25 @@ cp ${WorkingDirectory}/DefaultFontFallbacks.plist   ${BackupPath}/DefaultFontFal
 
 if [ ! -f "/Library/Fonts/Hiragino Sans GB W3.otf" ];
 then
-	echo "[Hiragino Sans GB W3.otf IS MISSING, ABORT MISSION.]"
+	echo "[Hiragino Sans GB W3.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
 if [ ! -f "/Library/Fonts/Hiragino Sans GB W6.otf" ];
 then
-	echo "[Hiragino Sans GB W7.otf IS MISSING, ABORT MISSION.]"
+	echo "[Hiragino Sans GB W7.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
 if [ ! -f "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf" ];
 then
-	echo "[Hiragino Sans Pro W3.otf IS MISSING, ABORT MISSION.]"
+	echo "[Hiragino Sans Pro W3.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
 if [ ! -f "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" ];
 then
-	echo "[Hiragino Sans Pro W6.otf IS MISSING, ABORT MISSION.]"
+	echo "[Hiragino Sans Pro W6.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
@@ -122,14 +124,14 @@ fi
 # Copy Hiragino Fonts into Correct Folder with Correct System Permission
 #========================================================================
 
-if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W3.otf" ];
+if [ ! -d "${SystemFontsPath}/Hiragino Sans GB W3.otf" ];
 then
-	cp -v "/Library/Fonts/Hiragino Sans GB W3.otf" ${SystemFontsPath}/"Hiragino Sans GB W3.otf"
+	cp -v "/Library/Fonts/Hiragino Sans GB W3.otf" "${SystemFontsPath}/Hiragino Sans GB W3.otf"
 fi
 
-if [ ! -d ${SystemFontsPath}/"Hiragino Sans GB W6.otf" ];
+if [ ! -d "${SystemFontsPath}/Hiragino Sans GB W6.otf" ];
 then
-	cp -v "/Library/Fonts/Hiragino Sans GB W6.otf" ${SystemFontsPath}/"Hiragino Sans GB W6.otf"
+	cp -v "/Library/Fonts/Hiragino Sans GB W6.otf" "${SystemFontsPath}/Hiragino Sans GB W6.otf"
 fi
 
 if [ ! -d "${SystemFontsPath}/ヒラギノ角ゴ Pro W3.otf" ];
@@ -155,33 +157,33 @@ chmod 644 "${SystemFontsPath}/ヒラギノ角ゴ Pro W6.otf"
 # Convert phase: CTPresetFallbacks.plist
 #========================================
 
-Plutil -convert xml1 "${WorkingDirectory}/CTPresetFallbacks.plist"
+Plutil -convert xml1 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont-Medium" "HiraKakuPro-W6" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont-Medium" "HiraginoSansGB-W6" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont-Regular" "HiraKakuPro-W3" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont-Regular" "HiraginoSansGB-W3" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont-Light" "HiraKakuPro-W3" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont-Light" "HiraginoSansGB-W3" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${WorkingDirectory}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${WorkingDirectory}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Medium" "HiraKakuPro-W6" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Medium" "HiraginoSansGB-W6" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Regular" "HiraKakuPro-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Regular" "HiraginoSansGB-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Light" "HiraKakuPro-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${SysPlistsDir}/CTPresetFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${SysPlistsDir}/CTPresetFallbacks.plist"
 
-chown root:wheel "${WorkingDirectory}/CTPresetFallbacks.plist"
-chmod 644 "${WorkingDirectory}/CTPresetFallbacks.plist"
+chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
+chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 #===========================================
 # Convert phase: DefaultFontFallbacks.plist
 #===========================================
 
-Plutil -convert xml1 "${WorkingDirectory}/DefaultFontFallbacks.plist"
+Plutil -convert xml1 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" "HiraKakuPro-W3" "${WorkingDirectory}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" "HiraginoSansGB-W3" "${WorkingDirectory}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString "STHeitiTC-Light" "HiraKakuPro-W3" "${WorkingDirectory}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString "STHeitiSC-Light" "HiraginoSansGB-W3" "${WorkingDirectory}/DefaultFontFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont" "HiraKakuPro-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+"${PlistFileRegx}" EntireString "STHeitiTC-Light" "HiraKakuPro-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+"${PlistFileRegx}" EntireString "STHeitiSC-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
-chown root:wheel "${WorkingDirectory}/DefaultFontFallbacks.plist"
-chmod 644 "${WorkingDirectory}/DefaultFontFallbacks.plist"
+chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
+chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 #===========================================
 # Killing Finder
@@ -199,18 +201,19 @@ killall Finder
 #=============================================================
 # Force Chronosphere SinoType Gothic Fonts into Backup Folder
 #=============================================================
-mv -fv ${SystemFontsPath}/STHeiti\ Light.ttc ${BackupPath}/STHeiti\ Light.ttc.bak
-mv -fv ${SystemFontsPath}/STHeiti\ Medium.ttc ${BackupPath}/STHeiti\ Medium.ttc.bak
-mv -fv ${SystemFontsPath}/STHeiti\ Thin.ttc ${BackupPath}/STHeiti\ Thin.ttc.bak
-mv -fv ${SystemFontsPath}/STHeiti\ UltraLight.ttc ${BackupPath}/STHeiti\ UltraLight.ttc.bak
-mv -fv "/Library/Fonts/华文细黑.ttf" ${BackupPath}/KabunGothic-Light.ttf.bak
-mv -fv "/Library/Fonts/华文黑体.ttf" ${BackupPath}/KabunGothic-Medium.ttf.bak
+
+mv -fv "${SystemFontsPath}/STHeiti Light.ttc" "${BackupPath}/STHeiti Light.ttc.bak"
+mv -fv "${SystemFontsPath}/STHeiti Medium.ttc" "${BackupPath}/STHeiti Medium.ttc.bak"
+mv -fv "${SystemFontsPath}/STHeiti Thin.ttc" "${BackupPath}/STHeiti Thin.ttc.bak"
+mv -fv "${SystemFontsPath}/STHeiti UltraLight.ttc" "${BackupPath}/STHeiti UltraLight.ttc.bak"
+mv -fv "/Library/Fonts/华文细黑.ttf" "${BackupPath}/KabunGothic-Light.ttf.bak"
+mv -fv "/Library/Fonts/华文黑体.ttf" "${BackupPath}/KabunGothic-Medium.ttf.bak"
 
 #=============================================================
 # Remove Working Directory
 #=============================================================
 
-rm -rf ${fdrGarage}/
+rm -rf "${fdrGarage}/"
 
 #=============================================================
 # Clean Font Cache and Force Reboot

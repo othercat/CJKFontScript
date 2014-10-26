@@ -12,26 +12,25 @@
 # Tested by Shiki Suen on Oct 26, 2014, GMT+8.
 #
 # Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
-# Set the paths to the build and settings Plist
 
 #============================================
 # Public Instant Variables
 #============================================
 
-# cdir=$(cd "$(dirname "$0")"; pwd) #current dir
-fdrGarage="/tmp/FontInstallationScriptWorkingDirectory"
-Plutil="plutil"
-PlistFileRegx="./plistFileRegx"
+fdrGarage="/tmp/FontInstallationScriptSysPlistsDir"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
-RestoreDirectory="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
+SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
+Plutil="plutil"
+PlistFileRegx="${fdrGarage}/plistFileRegx"
+plisttoolhash="f4f6b442d93cda35a1aec25121318482"
 
 #============================================
 # Permission Requirements
 #============================================
 
 if [ $(id -u) != 0 ]; then
-	echo "Please use SUDO command to execute this BASH script."
+	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
 	exit
 fi
 
@@ -41,7 +40,7 @@ fi
 
 if [ ! -d "${BackupPath}" ]
 then
-	echo "Error: No backup folder exists!"
+	echo "[NO Backup Folder EXISTS, ABORT MISSION.]"
 	exit
 fi
 
@@ -51,21 +50,21 @@ fi
 
 if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ];
 then
-	cp  "${BackupPath}/CTPresetFallbacks.plist.bak" "${RestoreDirectory}/CTPresetFallbacks.plist"  
-	chown root:wheel "${RestoreDirectory}/CTPresetFallbacks.plist"
-	chmod 644 "${RestoreDirectory}/CTPresetFallbacks.plist"
+	cp  "${BackupPath}/CTPresetFallbacks.plist.bak" "${SysPlistsDir}/CTPresetFallbacks.plist"  
+	chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
+	chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
 else
-   echo "Error: No backup CTPresetFallbacks file exists!"
+   echo "[CTPresetFallbacks Backup is MISSING, ABORT MISSION.]"
    exit
 fi
 
 if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ];
 then
-	cp  "${BackupPath}/DefaultFontFallbacks.plist.bak" "${RestoreDirectory}/DefaultFontFallbacks.plist"  
-	chown root:wheel "${RestoreDirectory}/DefaultFontFallbacks.plist"
-	chmod 644 "${RestoreDirectory}/DefaultFontFallbacks.plist"
+	cp  "${BackupPath}/DefaultFontFallbacks.plist.bak" "${SysPlistsDir}/DefaultFontFallbacks.plist"  
+	chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
+	chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 else
-   echo "Error: No backup DefaultFontFallbacks file exists!"
+   echo "[DefaultFontFallbacks.plist.bak is MISSING, ABORT MISSION.]"
    exit
 fi
 
@@ -73,18 +72,18 @@ fi
 # Restore SinoType Gothic Fonts
 #============================================
 
-cp ${BackupPath}/STHeiti\ Light.ttc.bak ${SystemFontsPath}/STHeiti\ Light.ttc
-chown root:wheel ${SystemFontsPath}/STHeiti\ Light.ttc
-chmod 644 ${SystemFontsPath}/STHeiti\ Light.ttc
-cp ${BackupPath}/STHeiti\ Medium.ttc.bak ${SystemFontsPath}/STHeiti\ Medium.ttc
-chown root:wheel ${SystemFontsPath}/STHeiti\ Medium.ttc
-chmod 644 ${SystemFontsPath}/STHeiti\ Medium.ttc
-cp ${BackupPath}/STHeiti\ Thin.ttc.bak ${SystemFontsPath}/STHeiti\ Thin.ttc
-chown root:wheel ${SystemFontsPath}/STHeiti\ Thin.ttc
-chmod 644 ${SystemFontsPath}/STHeiti\ Thin.ttc
-cp ${BackupPath}/STHeiti\ UltraLight.ttc.bak ${SystemFontsPath}/STHeiti\ UltraLight.ttc
-chown root:wheel ${SystemFontsPath}/STHeiti\ UltraLight.ttc
-chmod 644 ${SystemFontsPath}/STHeiti\ UltraLight.ttc
+cp "${BackupPath}/STHeiti Light.ttc.bak" "${SystemFontsPath}/STHeiti Light.ttc"
+chown root:wheel "${SystemFontsPath}/STHeiti Light.ttc"
+chmod 644 "${SystemFontsPath}/STHeiti Light.ttc"
+cp "${BackupPath}/STHeiti Medium.ttc.bak" "${SystemFontsPath}/STHeiti Medium.ttc"
+chown root:wheel "${SystemFontsPath}/STHeiti Medium.ttc"
+chmod 644 "${SystemFontsPath}/STHeiti Medium.ttc"
+cp "${BackupPath}/STHeiti Thin.ttc.bak" "${SystemFontsPath}/STHeiti Thin.ttc"
+chown root:wheel "${SystemFontsPath}/STHeiti Thin.ttc"
+chmod 644 "${SystemFontsPath}/STHeiti Thin.ttc"
+cp "${BackupPath}/STHeiti UltraLight.ttc.bak" "${SystemFontsPath}/STHeiti UltraLight.ttc"
+chown root:wheel "${SystemFontsPath}/STHeiti UltraLight.ttc"
+chmod 644 "${SystemFontsPath}/STHeiti UltraLight.ttc"
 cp "${BackupPath}/KabunGothic-Light.ttf.bak"  "/Library/Fonts/华文细黑.ttf"
 cp "${BackupPath}/KabunGothic-Medium.ttf.bak"  "/Library/Fonts/华文黑体.ttf"
 
