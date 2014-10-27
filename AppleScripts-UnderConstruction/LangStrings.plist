@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1028</key>
+	<dict>
+		<key>msgSudoAcquiredFailure</key>
+		<string>Fail to Acquired Administrator Privileges, Abort Mission.</string>
+		<key>msgSudoAcquiredSuccess</key>
+		<string>Successfully Acquired Administrator Privileges.</string>
+		<key>msgUserCancellation</key>
+		<string>User Cancelled the Process, Abort Mission.</string>
+		<key>WelcomeMessage</key>
+		<string>You are going to change your Simplified &amp; Traditional Chinese System GUI font into Hiragino Sans GB &amp; Hiragino Kaku Pro.\n\nThis needs Administrative Privileges, or this app won&apos;t work.\n\nA UAC window will ask you for privileges.\n\nPress \&quot;OK\&quot; to Continue.</string>
+		<key>appTitle</key>
+		<string>Chinese GUI Font Replace to Hiragino</string>
+		<key>appLang</key>
+		<string>Use English to display this app</string>
+	</dict>
+	<key>1033</key>
+	<dict>
+		<key>msgSudoAcquiredFailure</key>
+		<string>管理員權限獲取失敗，任務中止。</string>
+		<key>msgSudoAcquiredSuccess</key>
+		<string>成功取得管理員權限。</string>
+		<key>msgUserCancellation</key>
+		<string>收到使用者取消修改的請求，任務中止。</string>
+		<key>WelcomeMessage</key>
+		<string>即將修改系統簡繁體中文介面字型為冬青黑體。\n\n簡體中文使用「Hiragino Sans GB」，\n繁體中文使用「Hiragino Kaku Gothic Pro」。\n\n該過程需要使用管理員權限，否則該應用將無法正常工作。\n\n即將出現的使用者帳戶控制視窗會向您索取相關權限。\n\n讚「好」以繼續。</string>
+		<key>appTitle</key>
+		<string>系統介面中文字型更換為冬青黑體</string>
+		<key>appLang</key>
+		<string>使用繁體中文作為該應用的主顯語言</string>
+	</dict>
+	<key>2052</key>
+	<dict>
+		<key>msgSudoAcquiredFailure</key>
+		<string>管理员权限获取失败，任务中止。</string>
+		<key>msgSudoAcquiredSuccess</key>
+		<string>成功取得管理员权限。</string>
+		<key>msgUserCancellation</key>
+		<string>收到使用者取消修改的请求，任务中止。</string>
+		<key>WelcomeMessage</key>
+		<string>即将修改系统简繁体中文介面字体为冬青黑体。\n\n简体中文使用「Hiragino Sans GB」，\n繁体中文使用「Hiragino Kaku Gothic Pro」。\n\n該过程需要使用管理员权限，否则该应用将无法正常工作。\n\n即将出现的用户帐户控制视窗会向您索取相关权限。\n\n赞「好」以继续。</string>
+		<key>appTitle</key>
+		<string>系统介面中文字体更换为冬青黑体</string>
+		<key>appLang</key>
+		<string>使用简体中文作为该应用的主显语言</string>
+	</dict>
+</dict>
+</plist>
