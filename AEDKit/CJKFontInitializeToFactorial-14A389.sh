@@ -10,6 +10,15 @@
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
 #============================================
+# Privileges Requirements
+#============================================
+
+if [ $(id -u) != 0 ]; then
+	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
+	exit
+fi
+
+#============================================
 # SinoType Gothic Fonts Online Recovery
 #============================================
 

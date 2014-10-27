@@ -22,7 +22,7 @@ PlistFileRegx="${fdrGarage}/plistFileRegx"
 plisttoolhash="f4f6b442d93cda35a1aec25121318482"
 
 #============================================
-# Permission Requirements
+# Privileges Requirements
 #============================================
 
 if [ $(id -u) != 0 ]; then
