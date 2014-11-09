@@ -11,7 +11,7 @@ CJKFontScript
 
 > <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
 
-<b>Recent update "Tohma Kazusa" tested by Shiki Suen at 2014-November-08, MST.</b><br>
+<b>Recent update "Kitahara Haruki" tested by Shiki Suen at 2014-November-08, MST.</b><br>
 Minor updates may introduced, please check commit list.
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
