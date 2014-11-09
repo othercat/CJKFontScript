@@ -5,7 +5,7 @@
 #   Get OS X's default CJK font settings recovered online, not based on local backups.
 #   This AED Script is composed by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Oct 26, 2014, MST.
+#   Tested by Shiki Suen on Nov 08, 2014, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -63,6 +63,7 @@ sudo chmod 644 "/System/Library/Frameworks/CoreText.framework/Versions/A/Resourc
 
 rm -rf "~/.FactorialCJKFontSettingsBackup"
 rm -rf "/tmp/FontInstallerTemporaryWorkingDir"
+rm -rf "/System/Library/Fonts/SHSDeskInterface.ttc"
 
 #=============================================================
 # Clean Font Cache and Force Reboot

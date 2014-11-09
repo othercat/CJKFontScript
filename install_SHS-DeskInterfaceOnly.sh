@@ -1,12 +1,12 @@
 #!/bin/bash
-#   Hiragino Sans Deployment Script
-#   Get OS X's default Chinese GUI font replaced into Hiragino Sans.
-#   (Both Traditional and Simplified Chinese use Hiragino Sans GB)
-#   @(#)  Repleace System Fallbacks Font to Hiragino Sans in the project plist.
+#   Source Hans Sans Deployment Script,
+#   Get OS X's default CJK GUI font replaced into SHSDeskInterface.
+#
+#   @(#)  Repleace System Fallbacks Font to SHSDeskInterface in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Oct 26, 2014, MST.
-#   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
+#   Tested by Shiki Suen on Nov 08, 2014, MST.
+#   Reference: https://github.com/ShikiSuen/SHSDeskInterface
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
 #============================================
@@ -88,40 +88,23 @@ fi
 
 cp "${SysPlistsDir}/DefaultFontFallbacks.plist" "${BackupPath}/DefaultFontFallbacks.plist.bak"
 
-#========================================================================
-# Check Existence of Factorial Hiragino Fonts
-#========================================================================
+#===========================================================================
+# SHSDeskInterface Font Download and Install with Correct System Permission
+#===========================================================================
 
-if [ ! -f "/Library/Fonts/Hiragino Sans GB W3.otf" ];
+cd "${fdrGarage}"
+
+rm -f "${fdrGarage}/SHSDeskInterface.ttc"
+curl -L "https://github.com/ShikiSuen/SHSDeskInterface/raw/master/SHSDeskInterface-SuperOTC.zip?raw=true" -o "${fdrGarage}/SHSDeskInterface-SuperOTC.zip"
+bsdtar -xvf "${fdrGarage}/SHSDeskInterface-SuperOTC.zip"
+if [ ! -f "${fdrGarage}/SHSDeskInterface.ttc" ]
 then
-	echo "[Hiragino Sans GB W3.otf is MISSING, ABORT MISSION.]"
+	echo "[Failed to download the latest SHSDeskInterface SuperOTC, ABORT MISSION.]"
 	exit
 fi
-
-if [ ! -f "/Library/Fonts/Hiragino Sans GB W6.otf" ];
-then
-	echo "[Hiragino Sans GB W7.otf is MISSING, ABORT MISSION.]"
-	exit
-fi
-
-#========================================================================
-# Copy Hiragino Fonts into Correct Folder with Correct System Permission
-#========================================================================
-
-if [ ! -d "${SystemFontsPath}/Hiragino Sans GB W3.otf" ];
-then
-	cp -v "/Library/Fonts/Hiragino Sans GB W3.otf" "${SystemFontsPath}/Hiragino Sans GB W3.otf"
-fi
-
-if [ ! -d "${SystemFontsPath}/Hiragino Sans GB W6.otf" ];
-then
-	cp -v "/Library/Fonts/Hiragino Sans GB W6.otf" "${SystemFontsPath}/Hiragino Sans GB W6.otf"
-fi
-
-chown root:wheel "${SystemFontsPath}/Hiragino Sans GB W3.otf"
-chown root:wheel "${SystemFontsPath}/Hiragino Sans GB W6.otf"
-chmod 644 "${SystemFontsPath}/Hiragino Sans GB W3.otf"
-chmod 644 "${SystemFontsPath}/Hiragino Sans GB W6.otf"
+mv -fv "${fdrGarage}/SHSDeskInterface.ttc" "${SystemFontsPath}/"
+chown root:wheel "${SystemFontsPath}/SHSDeskInterface.ttc"
+chmod 644 "${SystemFontsPath}/SHSDeskInterface.ttc"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -129,14 +112,12 @@ chmod 644 "${SystemFontsPath}/Hiragino Sans GB W6.otf"
 
 Plutil -convert xml1 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
-"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Medium" "HiraginoSansGB-W6" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Medium" "HiraginoSansGB-W6" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Regular" "HiraginoSansGB-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Regular" "HiraginoSansGB-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${SysPlistsDir}/CTPresetFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} "-Bold" "Font-Medium" "Font-Bold" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} "-Heavy" "Font-Medium" "Font-Heavy" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} "-Heavy" "Font-Bold" "Font-Heavy" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} "-Light" "Font-Light" "Font-Normal" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} "-Thin" "Font-UltraLight" "Font-Thin" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} "-UltraLight" "Font-Thin" "Font-UltraLight" "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
 chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
@@ -147,10 +128,10 @@ chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 Plutil -convert xml1 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
-"${PlistFileRegx}" EntireString ".AppleTraditionalChineseFont" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-"${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-"${PlistFileRegx}" EntireString "STHeitiTC-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-"${PlistFileRegx}" EntireString "STHeitiSC-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "STHeitiTC-Light" ".AppleTraditionalChineseFont-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "STHeitiSC-Light" ".AppleSimplifiedChineseFont-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "AppleSDGothicNeo-Regular" ".AppleKoreanFont-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "HiraKakuProN-W3" ".AppleJapaneseFont-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
 chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"

@@ -11,21 +11,39 @@ CJKFontScript
 
 > <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
 
-<b>Recent update "Tohma Kazusa" tested by Shiki Suen at 2014-October-26, MST.</b><br>
+<b>Recent update "Tohma Kazusa" tested by Shiki Suen at 2014-November-08, MST.</b><br>
 Minor updates may introduced, please check commit list.
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
 
-Run `install_Hiragino.sh`	or `install_SHS.sh` to run installer scripts by Terminal,<br>
+**Always Use `sudo bash install_XXXX.sh` to run installer scripts by Terminal.**<br>
 // You should restart all of running applications after running these scripts,<br>
 // or better close all applications except Terminal.
 
-Run `restore.sh` to restore fonts and settings from the backups created by installer scripts.
+> **Install_Hiragino.sh uses:**<br>
+`Hiragino Kaku Gothic Pro` as Traditional Chinese GUI font.<br>
+`Hiragino Sans GB` as Simplified Chinese GUI font.<br>
+<br>
+> **Install_Hiragino-ProN.sh uses:**<br>
+`Hiragino Kaku Gothic ProN` as Traditional Chinese GUI font.<br>
+`Hiragino Sans GB` as Simplified Chinese GUI font.<br>
+<br>
+> **Install_Hiragino-GBOnly.sh uses:**<br>
+`Hiragino Sans GB` as **both** Traditional and Simplified Chinese GUI font.<br>
+<br>
+> **For Install_SHS-AdobeOfficialSuperOTC.sh:**<br>
+Simplified Chinese GUI uses `Source Han Sans SC` as its GUI font.<br>
+Traditional Chinese GUI uses `Source Han Sans TC` as its GUI font.<br>
+Korean GUI uses `Source Han Sans K` as its GUI font.<br>
+Japanese GUI uses `Source Han Sans` as its GUI font.<br>
+<br>
+> **For Install_SHS-DeskInterfaceOnly.sh:**<br>
+We use modified hidden font "SHSDeskInterface" with camouflage to let the system font read them as its first priority, but this **needs original CJK fonts' absence** (better only move STHeiti away, and this installer script could do that). Meanwhile, factorial font fallback plists still needs to be modified a little to let this fontset work in a better manner (could also be done by this installer script). //More Intel: https://github.com/ShikiSuen/SHSDeskInterface
 
-All of these scripts need to run with `sudo` to gain administrative permissions.
+</code></pre>
+Run `sudo bash restore.sh` to restore fonts and settings from the backups created by installer scripts.
 
-<b>Always follow the following rule to run these scripts by Terminal</b>:
-<pre><code>sudo bash XXXXXXXX.sh</code></pre>
+All of these scripts here need to run with `sudo` to gain administrative permissions.
 
 The `safari.css` could be used if you want Safari follows system's font fallback settings.
 
@@ -36,6 +54,15 @@ Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlist
 
 Major Update History
 =============
+####2014Nov08(MST) Wave 3, Codename "Kitahara Haruki"####
+These Updates were introduced regarding to the First "Stable" Release:
+
+1. We added some siblings of Hiragino Sans installer scripts to allow people use Hiragino Kaku Gothic ProN or Hiragino Sans GB as their Traditional GUI font.
+
+2. We have received mass complaints on SHS's defect as GUI fonts while renaming files in Finder with CJK characters introduced, and lots of people don't like SHS 1.001's exaggerated line gap in horizontal texts. That's why we introduce **SHSDeskInterface** project (https://github.com/ShikiSuen/SHSDeskInterface). This is a forked project from SHS. It's a hidden font with camouflage to let the system font read them as its first priority, but this needs original CJK fonts' absence (we will only move STHeiti away to the backup folder in our Installer Scripts). See intel **"For Install_SHS-DeskInterfaceOnly.sh:"** above for more intel.
+
+3. AEDKit Scripts Updated with SHSDeskInterface's removal introduced.
+
 ####2014Oct26(MST) Wave 2, Codename "Tohma Kazusa"####
 These bug fixes were introduced regarding to the First "Stable" Release:
 

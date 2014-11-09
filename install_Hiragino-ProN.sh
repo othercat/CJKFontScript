@@ -5,7 +5,7 @@
 #   @(#)  Repleace System Fallbacks Font to Hiragino Sans in the Project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Oct 26, 2014, MST.
+#   Tested by Shiki Suen on Oct 30, 2014, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
