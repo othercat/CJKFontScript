@@ -63,6 +63,11 @@ sudo chmod 644 "/System/Library/Frameworks/CoreText.framework/Versions/A/Resourc
 
 rm -rf "~/.FactorialCJKFontSettingsBackup"
 rm -rf "/tmp/FontInstallerTemporaryWorkingDir"
+
+#=============================================================
+# Remove SHSDeskInterface
+#=============================================================
+
 rm -rf "/System/Library/Fonts/SHSDeskInterface.ttc"
 
 #=============================================================
