@@ -57,7 +57,7 @@ Major Update History
 ####2014Dec04(MST) Wave 4, Codename "Ogiso Susumu"####
 These updates were introduced regarding to the last wave:
 
-1. SHSDeskInterface updated, only its lineGap changed to 50 while other metrics are reverted to Adobe's factorial settings (thanks to Kobayashi Ken, a.k.a. Ken Lunde, the programmer of SHS, for his suggestion).
+1. SHSDeskInterface updated, only its lineGap changed to 1000 while other metrics are reverted to Adobe's factorial settings (thanks to Kobayashi Ken, a.k.a. Ken Lunde, the programmer of SHS, for his suggestion on pointing out which parameter should be modified).
 
 2. Since OS X Yosemite's stable release has already been 14B25, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
 
