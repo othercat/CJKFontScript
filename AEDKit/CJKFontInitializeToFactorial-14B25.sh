@@ -1,11 +1,11 @@
 #!/bin/bash
 #   Factorial Font Configuration & SinoType Gothic Online Recovery Script (De-Fib)
-#	The Script version must matches OS X's build number. (Current: 14A389)
+#	The Script version must matches OS X's build number. (Current: 14B25)
 #   This Script needs access to GitHub Online.
 #   Get OS X's default CJK font settings recovered online, not based on local backups.
 #   This AED Script is composed by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Nov 08, 2014, MST.
+#   Tested by Shiki Suen on Dec 04, 2014, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -13,7 +13,8 @@
 # Privileges Requirements
 #============================================
 
-if [ $(id -u) != 0 ]; then
+if [ $(id -u) != 0 ]
+then
 	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
 	exit
 fi
@@ -50,8 +51,8 @@ sudo chmod 644 "/Library/Fonts/华文细黑.ttf"
 # Font Fallbacks Plists Recovery
 #============================================
 
-sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14A389/FactorialPlists/CTPresetFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
-sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14A389/FactorialPlists/DefaultFontFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
+sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14B25/FactorialPlists/CTPresetFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
+sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14B25/FactorialPlists/DefaultFontFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
 sudo chown root:wheel "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
 sudo chmod 644 "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
 sudo chown root:wheel "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
@@ -61,14 +62,16 @@ sudo chmod 644 "/System/Library/Frameworks/CoreText.framework/Versions/A/Resourc
 # Remove Unnecessary Backup Files
 #=============================================================
 
-rm -rf "~/.FactorialCJKFontSettingsBackup"
-rm -rf "/tmp/FontInstallerTemporaryWorkingDir"
+rm -rf "~/.FactorialCJKFontSettingsBackup/"
+rm -rf "/tmp/FontInstallerTemporaryWorkingDir/"
 
 #=============================================================
 # Remove SHSDeskInterface
 #=============================================================
 
-rm -rf "/System/Library/Fonts/SHSDeskInterface.ttc"
+rm -f "/System/Library/Fonts/SHSDeskInterface.ttc"
+rm -f "/Library/Fonts/SHSDeskInterface.ttc"
+rm -f "/Library/SourceHanSansUI.ttc"
 
 #=============================================================
 # Clean Font Cache and Force Reboot
