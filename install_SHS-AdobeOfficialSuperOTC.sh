@@ -5,7 +5,7 @@
 #   @(#)  Repleace System Fallbacks Font to Source Han Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Oct 26, 2014, MST.
+#   Tested by Shiki Suen on Dec 04, 2014, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -16,6 +16,7 @@
 fdrGarage="/tmp/FontInstallationWorkingDir"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
+LibraryFontsPath="/Library/Fonts"
 SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
 Plutil="plutil"
 PlistFileRegx="${fdrGarage}/plistFileRegx"
@@ -25,7 +26,8 @@ plisttoolhash="f4f6b442d93cda35a1aec25121318482"
 # Privileges Requirements
 #============================================
 
-if [ $(id -u) != 0 ]; then
+if [ $(id -u) != 0 ]
+then
 	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
 	exit
 fi
@@ -74,14 +76,14 @@ then
 	mkdir "${BackupPath}"
 fi
 
-if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ];
+if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ]
 then
    mv "${BackupPath}/CTPresetFallbacks.plist.bak" "${BackupPath}/CTPresetFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
 fi
 
 cp "${SysPlistsDir}/CTPresetFallbacks.plist" "${BackupPath}/CTPresetFallbacks.plist.bak"
 
-if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ];
+if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ]
 then
    mv "${BackupPath}/DefaultFontFallbacks.plist.bak" "${BackupPath}/DefaultFontFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
 fi
@@ -102,9 +104,9 @@ then
 	echo "[Failed to download the latest Source Han Sans SuperOTC, ABORT MISSION.]"
 	exit
 fi
-cp "${fdrGarage}/SourceHanSans.ttc" "${SystemFontsPath}/"
-chown root:wheel "${SystemFontsPath}/SourceHanSans.ttc"
-chmod 644 "${SystemFontsPath}/SourceHanSans.ttc"
+cp "${fdrGarage}/SourceHanSans.ttc" "${LibraryFontsPath}/"
+chown root:wheel "${LibraryFontsPath}/SourceHanSans.ttc"
+chmod 644 "{LibraryFontsPath}/SourceHanSans.ttc"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -167,8 +169,8 @@ mv -fv "${SystemFontsPath}/STHeiti Light.ttc" "${BackupPath}/STHeiti Light.ttc.b
 mv -fv "${SystemFontsPath}/STHeiti Medium.ttc" "${BackupPath}/STHeiti Medium.ttc.bak"
 mv -fv "${SystemFontsPath}/STHeiti Thin.ttc" "${BackupPath}/STHeiti Thin.ttc.bak"
 mv -fv "${SystemFontsPath}/STHeiti UltraLight.ttc" "${BackupPath}/STHeiti UltraLight.ttc.bak"
-mv -fv "/Library/Fonts/华文细黑.ttf" "${BackupPath}/KabunGothic-Light.ttf.bak"
-mv -fv "/Library/Fonts/华文黑体.ttf" "${BackupPath}/KabunGothic-Medium.ttf.bak"
+mv -fv "${LibraryFontsPath}/华文细黑.ttf" "${BackupPath}/KabunGothic-Light.ttf.bak"
+mv -fv "${LibraryFontsPath}/华文黑体.ttf" "${BackupPath}/KabunGothic-Medium.ttf.bak"
 
 #=============================================================
 # Remove Working Directory

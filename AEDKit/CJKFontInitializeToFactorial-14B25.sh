@@ -62,16 +62,16 @@ sudo chmod 644 "/System/Library/Frameworks/CoreText.framework/Versions/A/Resourc
 # Remove Unnecessary Backup Files
 #=============================================================
 
-rm -rf "~/.FactorialCJKFontSettingsBackup/"
-rm -rf "/tmp/FontInstallerTemporaryWorkingDir/"
+sudo rm -rf ~/".FactorialCJKFontSettingsBackup/"
+sudo rm -rf "/tmp/FontInstallerTemporaryWorkingDir/"
 
 #=============================================================
 # Remove SHSDeskInterface
 #=============================================================
 
-rm -f "/System/Library/Fonts/SHSDeskInterface.ttc"
-rm -f "/Library/Fonts/SHSDeskInterface.ttc"
-rm -f "/Library/SourceHanSansUI.ttc"
+sudo rm -f "/System/Library/Fonts/SHSDeskInterface.ttc"
+sudo rm -f "/Library/Fonts/SHSDeskInterface.ttc"
+sudo rm -f "/Library/SourceHanSansUI.ttc"
 
 #=============================================================
 # Clean Font Cache and Force Reboot

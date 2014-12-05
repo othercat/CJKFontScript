@@ -5,7 +5,7 @@
 #   @(#)  Repleace System Fallbacks Font to Hiragino Sans in the Project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Oct 30, 2014, MST.
+#   Tested by Shiki Suen on Dec 04, 2014, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -16,6 +16,7 @@
 fdrGarage="/tmp/FontInstallationWorkingDir"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
+LibraryFontsPath="/Library/Fonts"
 SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
 Plutil="plutil"
 PlistFileRegx="${fdrGarage}/plistFileRegx"
@@ -25,7 +26,8 @@ plisttoolhash="f4f6b442d93cda35a1aec25121318482"
 # Privileges Requirements
 #============================================
 
-if [ $(id -u) != 0 ]; then
+if [ $(id -u) != 0 ]
+then
 	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
 	exit
 fi
@@ -74,54 +76,40 @@ then
 	mkdir "${BackupPath}"
 fi
 
-if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ];
+if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ]
 then
    mv "${BackupPath}/CTPresetFallbacks.plist.bak" "${BackupPath}/CTPresetFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
 fi
 
 cp "${SysPlistsDir}/CTPresetFallbacks.plist" "${BackupPath}/CTPresetFallbacks.plist.bak"
 
-if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ];
+if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ]
 then
    mv "${BackupPath}/DefaultFontFallbacks.plist.bak" "${BackupPath}/DefaultFontFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
 fi
 
 cp "${SysPlistsDir}/DefaultFontFallbacks.plist" "${BackupPath}/DefaultFontFallbacks.plist.bak"
 
-#========================================================================
-# Check Existence of Factorial Hiragino Fonts
-#========================================================================
+#===========================================================================
+# Check Existence of Factorial Hiragino Fonts and Apply Permission Settings
+#===========================================================================
 
-if [ ! -f "/Library/Fonts/Hiragino Sans GB W3.otf" ];
+if [ ! -f "${LibraryFontsPath}/Hiragino Sans GB W3.otf" ]
 then
 	echo "[Hiragino Sans GB W3.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
-if [ ! -f "/Library/Fonts/Hiragino Sans GB W6.otf" ];
+if [ ! -f "${LibraryFontsPath}/Hiragino Sans GB W6.otf" ]
 then
 	echo "[Hiragino Sans GB W7.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
-#========================================================================
-# Copy Hiragino Fonts into Correct Folder with Correct System Permission
-#========================================================================
-
-if [ ! -d "${SystemFontsPath}/Hiragino Sans GB W3.otf" ];
-then
-	cp -v "/Library/Fonts/Hiragino Sans GB W3.otf" "${SystemFontsPath}/Hiragino Sans GB W3.otf"
-fi
-
-if [ ! -d "${SystemFontsPath}/Hiragino Sans GB W6.otf" ];
-then
-	cp -v "/Library/Fonts/Hiragino Sans GB W6.otf" "${SystemFontsPath}/Hiragino Sans GB W6.otf"
-fi
-
-chown root:wheel "${SystemFontsPath}/Hiragino Sans GB W3.otf"
-chown root:wheel "${SystemFontsPath}/Hiragino Sans GB W6.otf"
-chmod 644 "${SystemFontsPath}/Hiragino Sans GB W3.otf"
-chmod 644 "${SystemFontsPath}/Hiragino Sans GB W6.otf"
+chown root:wheel "${LibraryFontsPath}/Hiragino Sans GB W3.otf"
+chown root:wheel "${LibraryFontsPath}/Hiragino Sans GB W6.otf"
+chmod 644 "${LibraryFontsPath}/Hiragino Sans GB W3.otf"
+chmod 644 "${LibraryFontsPath}/Hiragino Sans GB W6.otf"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -176,8 +164,8 @@ mv -fv "${SystemFontsPath}/STHeiti Light.ttc" "${BackupPath}/STHeiti Light.ttc.b
 mv -fv "${SystemFontsPath}/STHeiti Medium.ttc" "${BackupPath}/STHeiti Medium.ttc.bak"
 mv -fv "${SystemFontsPath}/STHeiti Thin.ttc" "${BackupPath}/STHeiti Thin.ttc.bak"
 mv -fv "${SystemFontsPath}/STHeiti UltraLight.ttc" "${BackupPath}/STHeiti UltraLight.ttc.bak"
-mv -fv "/Library/Fonts/华文细黑.ttf" "${BackupPath}/KabunGothic-Light.ttf.bak"
-mv -fv "/Library/Fonts/华文黑体.ttf" "${BackupPath}/KabunGothic-Medium.ttf.bak"
+mv -fv "${LibraryFontsPath}/华文细黑.ttf" "${BackupPath}/KabunGothic-Light.ttf.bak"
+mv -fv "${LibraryFontsPath}/华文黑体.ttf" "${BackupPath}/KabunGothic-Medium.ttf.bak"
 
 #=============================================================
 # Remove Working Directory

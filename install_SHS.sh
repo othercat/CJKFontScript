@@ -5,7 +5,7 @@
 #   @(#)  Repleace System Fallbacks Font to Source Han Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Nov 08, 2014, MST.
+#   Tested by Shiki Suen on Dec 04, 2014, MST.
 #   Reference: https://github.com/ShikiSuen/SHSDeskInterface
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 

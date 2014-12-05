@@ -9,9 +9,9 @@ CJKFontScript
 > // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice (unless your backups are removed).
 - STHeiti (SinoType Sans) is removed from your system.<br>(our scripts only move SinoType Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
 
-> <b>De-fib Scripts matches System's Build Number (e.g.:`14A389`, etc.).</b>
+> <b>De-fib Scripts matches System's Build Number (e.g.:`14B25`, etc.).</b>
 
-<b>Recent update "Kitahara Haruki" tested by Shiki Suen at 2014-November-08, MST.</b><br>
+<b>Recent update "Ogiso Susumu" tested by Shiki Suen at 2014-December-04, MST.</b><br>
 Minor updates may introduced, please check commit list.
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
@@ -54,6 +54,15 @@ Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlist
 
 Major Update History
 =============
+####2014Dec04(MST) Wave 4, Codename "Ogiso Susumu"####
+These updates were introduced regarding to the last wave:
+
+1. SHSDeskInterface updated, only its lineGap changed to 50 while other metrics are reverted to Adobe's factorial settings (thanks to Kobayashi Ken, a.k.a. Ken Lunde, the programmer of SHS, for his suggestion).
+
+2. Since OS X Yosemite's stable release has already been 14B25, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
+
+3. Thanks to Wells Riley @ https://github.com/wellsriley/YosemiteSanFranciscoFont , his repo inspired me that the system font could be installed in "/Library/Fonts/" folder. This means that only `chown root:wheel` + `chmod 644` permission settings and `sudo atsutil databases -remove` are mandatory regarding to the installation of new system font files. Thus, we updated this repo and the OSXCJKFontPlists repo.
+
 ####2014Nov08(MST) Wave 3, Codename "Kitahara Haruki"####
 These updates were introduced regarding to the last wave:
 

@@ -5,7 +5,7 @@
 #   @(#)  Repleace System Fallbacks Font to SourceHans TC in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Oct 26, 2014, MST.
+#   Tested by Shiki Suen on Dec 04, 2014, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -16,6 +16,7 @@
 fdrGarage="/tmp/FontInstallationWorkingDir"
 BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
+LibraryFontsPath="/Library/Fonts"
 SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
 Plutil="plutil"
 PlistFileRegx="${fdrGarage}/plistFileRegx"
@@ -100,7 +101,9 @@ killall Finder
 # Remove SHSDeskInterface
 #=============================================================
 
-rm -rf "/System/Library/Fonts/SHSDeskInterface.ttc"
+rm -f "/System/Library/Fonts/SHSDeskInterface.ttc"
+rm -f "/Library/Fonts/SHSDeskInterface.ttc"
+rm -f "/Library/SourceHanSansUI.ttc"
 
 #=============================================================
 # Clean Font Cache and Force Reboot
