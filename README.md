@@ -66,7 +66,7 @@ These updates were introduced regarding to the last wave:
 ####2014Nov08(MST) Wave 3, Codename "Kitahara Haruki"####
 These updates were introduced regarding to the last wave:
 
-1. We added some siblings of Hiragino Sans installer scripts to allow people use Hiragino Kaku Gothic ProN or Hiragino Sans GB as their Traditional GUI font.
+1. We added some siblings of Hiragino Sans installer scripts to allow people use Hiragino Kaku Gothic ProN or Hiragino Sans GB as their Traditional Chinese GUI font.
 
 2. We have received mass complaints on SHS's defect as GUI fonts while renaming files in Finder with CJK characters introduced, and lots of people don't like SHS 1.001's exaggerated line gap in horizontal texts. That's why we introduce **SHSDeskInterface** project (https://github.com/ShikiSuen/SHSDeskInterface). This is a forked project from SHS. It's a hidden font with camouflage to let the system font read them as its first priority, but this needs original CJK fonts' absence (we will only move STHeiti away to the backup folder in our Installer Scripts). See intel **"For Install_SHS-DeskInterfaceOnly.sh:"** above for more intel.
 
