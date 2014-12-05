@@ -2,7 +2,7 @@
 #   Source Hans Sans Deployment Script,
 #   Get OS X's default CJK GUI font replaced into Source Han Sans.
 #
-#   @(#)  Repleace System Fallbacks Font to Source Han Sans in the project plist.
+#   @(#)  Replace System Fallbacks Font to Source Han Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
 #   Tested by Shiki Suen on Dec 04, 2014, MST.

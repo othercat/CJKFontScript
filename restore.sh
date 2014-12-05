@@ -2,7 +2,7 @@
 #   Source Hans TC Restore Script
 #   Restore those backups made by installer scripts.
 #
-#   @(#)  Repleace System Fallbacks Font to SourceHans TC in the project plist.
+#   @(#)  Replace System Fallbacks Font to SourceHans TC in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
 #   Tested by Shiki Suen on Dec 04, 2014, MST.

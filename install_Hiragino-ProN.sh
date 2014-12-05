@@ -2,7 +2,7 @@
 #   Hiragino Sans Deployment Script
 #   Get OS X's default Chinese GUI font replaced into Hiragino Sans.
 #   (Simplified Chinese use Hiragino Sans GB, Traditional Chinese use Hiragino Kaku ProN)
-#   @(#)  Repleace System Fallbacks Font to Hiragino Sans in the Project plist.
+#   @(#)  Replace System Fallbacks Font to Hiragino Sans in the Project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
 #   Tested by Shiki Suen on Dec 04, 2014, MST.

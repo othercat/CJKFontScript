@@ -2,7 +2,7 @@
 #   Source Hans Sans Deployment Script,
 #   Get OS X's default CJK GUI font replaced into SHSDeskInterface.
 #
-#   @(#)  Repleace System Fallbacks Font to SHSDeskInterface in the project plist.
+#   @(#)  Replace System Fallbacks Font to SHSDeskInterface in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
 #   Tested by Shiki Suen on Dec 04, 2014, MST.
