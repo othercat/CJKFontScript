@@ -9,9 +9,9 @@ CJKFontScript
 > // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice (unless your backups are removed).
 - STHeiti (SinoType Sans) is removed from your system.<br>(our scripts only move SinoType Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
 
-> <b>De-fib Scripts matches System's Build Number (e.g.:`14B25`, etc.).</b>
+> <b>De-fib Scripts matches System's Build Number (e.g.:`14C109`, etc.).</b>
 
-<b>Recent update "Ogiso Susumu" tested by Shiki Suen at 2014-December-04, MST.</b><br>
+<b>Recent update "Ogiso Setsuna" tested by Shiki Suen at 2015-Feburary-01, MST.</b><br>
 Minor updates may introduced, please check commit list.
 
 Please make sure your plists are factorial before running these installer scripts,<br> otherwise you may want to run De-Fib scripts.
@@ -37,8 +37,8 @@ Traditional Chinese GUI uses `Source Han Sans TC` as its GUI font.<br>
 Korean GUI uses `Source Han Sans K` as its GUI font.<br>
 Japanese GUI uses `Source Han Sans` as its GUI font.<br>
 <br>
-> **For Install_SHS-DeskInterfaceOnly.sh:**<br>
-We use modified hidden font "SHSDeskInterface" with camouflage to let the system font read them as its first priority, but this **needs original CJK fonts' absence** (better only move STHeiti away, and this installer script could do that). Meanwhile, factorial font fallback plists still needs to be modified a little to let this fontset work in a better manner (could also be done by this installer script). //More Intel: https://github.com/ShikiSuen/SHSDeskInterface
+> **For Install_SHS-UI.sh:**<br>
+We use modified hidden font "SourceHanSansUI" separate from the Adobe's official build in order to deal with the bug that OS X never read LineGap in some cases (e.g. Filename under icons in Finder). Compare to the previous "SHSDeskInterface", this **doesn't need original CJK fonts' absence** `unless it is specified by the apps you are using (that's why we still move STHeiti away via the installation script)`. The factorial font plists must be modified to fit this fontset, and the installation script could finish that (just like what the script files do for Hiragino fonts above). //More Intel: https://github.com/ShikiSuen/SHSDeskInterface<br>
 
 </code></pre>
 Run `sudo bash restore.sh` to restore fonts and settings from the backups created by installer scripts.
@@ -54,12 +54,21 @@ Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlist
 
 Major Update History
 =============
+####2015Feb01(MST) Wave 5, Codename "Ogiso Setsuna"####
+These updates were introduced regarding to the last wave:
+
+1. We have found that the camouflaged fontset "SHSDeskInterface" couldn't be always displayed and its display priority could still be robbed by Apple's official fonts (esp. You don't want to remove some of those fonts, such as Hiragino Kaku Gothic ProN). **In this update*, we will replace this set with "SourceHanSansUI" instead*. But STHeiti will still be moved away since some apps and browsers specified them as the default Chinese display font.
+
+2. Since OS X Yosemite has serious problem regarding its UILabel elements (they omit the lineGap data, cause display malfunction among multi-line filenames in Finder if the display font has lineGap data), Based on SHSDeskInterface, we add the LineGap data onto the existing Ascender parameter and then we set the new LineGap data into Zero. //Reference: http://www.zhihu.com/question/27910232
+
+3. Since OS X Yosemite's stable release has already been 14C109 (10.10.2) by the time this update is pushed, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
+
 ####2014Dec04(MST) Wave 4, Codename "Ogiso Susumu"####
 These updates were introduced regarding to the last wave:
 
 1. SHSDeskInterface updated, only its lineGap changed to "100" while other metrics are reverted to Adobe's factorial settings (thanks to Kobayashi Ken, a.k.a. Ken Lunde, the programmer of SHS, for his suggestion on pointing out which parameter should be modified).
 
-2. Since OS X Yosemite's stable release has already been 14B25, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
+2. Since OS X Yosemite's stable release has already been 14B25 (10.10.1) by the time this update is pushed, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
 
 3. Thanks to Wells Riley @ https://github.com/wellsriley/YosemiteSanFranciscoFont , his repo inspired me that the system font could be installed in "/Library/Fonts/" folder. This means that only `chown root:wheel` + `chmod 644` permission settings and `sudo atsutil databases -remove` are mandatory regarding to the installation of new system font files. Thus, we updated this repo and the OSXCJKFontPlists repo.
 

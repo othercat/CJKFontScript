@@ -1,11 +1,11 @@
 #!/bin/bash
 #   Factorial Font Configuration & SinoType Gothic Online Recovery Script (De-Fib)
-#	The Script version must matches OS X's build number. (Current: 14B25)
+#	The Script version must matches OS X's build number. (Current: 14C109)
 #   This Script needs access to GitHub Online.
 #   Get OS X's default CJK font settings recovered online, not based on local backups.
 #   This AED Script is composed by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Dec 04, 2014, MST.
+#   Tested by Shiki Suen on Feb, 01, 2015, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -51,8 +51,8 @@ sudo chmod 644 "/Library/Fonts/华文细黑.ttf"
 # Font Fallbacks Plists Recovery
 #============================================
 
-sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14B25/FactorialPlists/CTPresetFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
-sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14B25/FactorialPlists/DefaultFontFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
+sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14C109/FactorialPlists/CTPresetFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
+sudo curl -L "https://github.com/ShikiSuen/OSXCJKFontPlists/blob/master/Yosemite-10.10-14C109/FactorialPlists/DefaultFontFallbacks.plist?raw=true" -o "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
 sudo chown root:wheel "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
 sudo chmod 644 "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/CTPresetFallbacks.plist"
 sudo chown root:wheel "/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/DefaultFontFallbacks.plist"
