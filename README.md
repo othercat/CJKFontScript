@@ -38,7 +38,7 @@ Korean GUI uses `Source Han Sans K` as its GUI font.<br>
 Japanese GUI uses `Source Han Sans` as its GUI font.<br>
 <br>
 > **For Install_SHS-UI.sh:**<br>
-We use modified hidden font "SourceHanSansUI" separate from the Adobe's official build in order to deal with the bug that OS X never read LineGap in some cases (e.g. Filename under icons in Finder). Compare to the previous "SHSDeskInterface", this **doesn't need original CJK fonts' absence** `unless it is specified by the apps you are using (that's why we still move STHeiti away via the installation script)`. The factorial font plists must be modified to fit this fontset, and the installation script could finish that (just like what the script files do for Hiragino fonts above). //More Intel: https://github.com/ShikiSuen/SHSDeskInterface<br>
+We use modified hidden font "SourceHanSansUI" separate from the Adobe's official build in order to deal with the bug that OS X never read LineGap in some cases (e.g. Filename under icons in Finder). Compare to the previous "SHSDeskInterface", this **doesn't need original CJK fonts' absence** `unless it is specified by the apps you are using (that's why we still move STHeiti away via the installation script)`. The factorial font plists must be modified to fit this fontset, and the installation script could finish that (just like what the script files do for Hiragino fonts above). //More Intel: https://github.com/ShikiSuen/SourceHanSansUI<br>
 
 </code></pre>
 Run `sudo bash restore.sh` to restore fonts and settings from the backups created by installer scripts.
@@ -77,7 +77,7 @@ These updates were introduced regarding to the last wave:
 
 1. We added some siblings of Hiragino Sans installer scripts to allow people use Hiragino Kaku Gothic ProN or Hiragino Sans GB as their Traditional Chinese GUI font.
 
-2. We have received mass complaints on SHS's defect as GUI fonts while renaming files in Finder with CJK characters introduced, and lots of people don't like SHS 1.001's exaggerated line gap in horizontal texts. That's why we introduce **SHSDeskInterface** project (https://github.com/ShikiSuen/SHSDeskInterface). This is a forked project from SHS. It's a hidden font with camouflage to let the system font read them as its first priority, but this needs original CJK fonts' absence (we will only move STHeiti away to the backup folder in our Installer Scripts). See **"For Install_SHS-DeskInterfaceOnly.sh:"** above for more intel.
+2. We have received mass complaints on SHS's defect as GUI fonts while renaming files in Finder with CJK characters introduced, and lots of people don't like SHS 1.001's exaggerated line gap in horizontal texts. That's why we introduce **SHSDeskInterface** project. This is a forked project from SHS. It's a hidden font with camouflage to let the system font read them as its first priority, but this needs original CJK fonts' absence (we will only move STHeiti away to the backup folder in our Installer Scripts). See **"For Install_SHS-DeskInterfaceOnly.sh:"** above for more intel.
 
 3. AEDKit Scripts and `restore.sh` are updated with SHSDeskInterface's removal introduced.
 
