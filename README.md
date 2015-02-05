@@ -57,7 +57,7 @@ Major Update History
 ####2015Feb01(MST) Wave 5, Codename "Ogiso Setsuna"####
 These updates were introduced regarding to the last wave:
 
-1. We have found that the camouflaged fontset "SHSDeskInterface" couldn't be always displayed and its display priority could still be robbed by Apple's official fonts (esp. You don't want to remove some of those fonts, such as Hiragino Kaku Gothic ProN). **In this update*, we will replace this set with "SourceHanSansUI" instead*. But STHeiti will still be moved away since some apps and browsers specified them as the default Chinese display font.
+1. We have found that the camouflaged fontset "SHSDeskInterface" couldn't be always displayed and its display priority could still be robbed by Apple's official fonts (esp. You don't want to remove some of those fonts, such as Hiragino Kaku Gothic ProN). **In this update*, we will replace this set with "SourceHanSansUI" instead*. But STHeiti will still be moved away since some apps and browsers specified them as their default Chinese display font.
 
 2. Since OS X Yosemite has serious problem regarding its UILabel elements (they omit the lineGap data, cause display malfunction among multi-line filenames in Finder if the display font has lineGap data), Based on SHSDeskInterface, we add the LineGap data onto the existing Ascender parameter and then we set the new LineGap data into Zero. //Reference: http://www.zhihu.com/question/27910232
 
