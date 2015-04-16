@@ -10,7 +10,7 @@ This repo is currently exclusive for OS X Yosemite.
 > // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice (unless your backups are removed).
 - STHeiti (SinoType Sans) is removed from your system.<br>(our scripts only move SinoType Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
 
-> <b>De-fib Scripts matches System's Build Number (e.g.:`14C109`, etc.).</b>
+> <b>De-fib Scripts matches System's Build Number (e.g.:`14D131`, etc.).</b>
 
 <b>Recent update "Seto Hiroko" tested by Shiki Suen at 2015-April-15, MST.</b><br>
 Minor updates may introduced, please check commit list.
