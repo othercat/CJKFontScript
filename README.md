@@ -15,7 +15,7 @@ This repo is currently exclusive for OS X Yosemite.
 <b>Recent update "Seto Hiroko" tested by Shiki Suen at 2015-April-15, MST.</b><br>
 Minor updates may introduced, please check commit list.
 
-Please <b>make sure your plists are FACTORIAL before</b> running these installer scripts,<br> otherwise you MAY want to run De-Fib scripts.
+Please <b>make sure your plists are FACTORIAL before</b> running these installer scripts,<br> otherwise you MAY want to run De-Fib scripts at first.
 
 **Always Use `sudo bash install_XXXX.sh` to run installer scripts by Terminal.**<br>
 // You should restart all of running applications after running these scripts,<br>
