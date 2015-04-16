@@ -5,7 +5,7 @@
 #   @(#)  Replace System Fallbacks Font to Hiragino Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Feb, 01, 2015, MST.
+#   Tested by Shiki Suen on Apr, 15, 2015, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -102,7 +102,7 @@ fi
 
 if [ ! -f "${LibraryFontsPath}/Hiragino Sans GB W6.otf" ]
 then
-	echo "[Hiragino Sans GB W7.otf is MISSING, ABORT MISSION.]"
+	echo "[Hiragino Sans GB W6.otf is MISSING, ABORT MISSION.]"
 	exit
 fi
 
@@ -122,10 +122,10 @@ chown root:wheel "${LibraryFontsPath}/Hiragino Sans GB W3.otf"
 chown root:wheel "${LibraryFontsPath}/Hiragino Sans GB W6.otf"
 chown root:wheel "${LibraryFontsPath}/ヒラギノ角ゴ Pro W3.otf"
 chown root:wheel "${LibraryFontsPath}/ヒラギノ角ゴ Pro W6.otf"
-chmod 644 "${LibraryFontsPath}/Hiragino Sans GB W3.otf"
-chmod 644 "${LibraryFontsPath}/Hiragino Sans GB W6.otf"
-chmod 644 "${LibraryFontsPath}/ヒラギノ角ゴ Pro W3.otf"
-chmod 644 "${LibraryFontsPath}/ヒラギノ角ゴ Pro W6.otf"
+chmod 755 "${LibraryFontsPath}/Hiragino Sans GB W3.otf"
+chmod 755 "${LibraryFontsPath}/Hiragino Sans GB W6.otf"
+chmod 755 "${LibraryFontsPath}/ヒラギノ角ゴ Pro W3.otf"
+chmod 755 "${LibraryFontsPath}/ヒラギノ角ゴ Pro W6.otf"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -143,7 +143,7 @@ Plutil -convert xml1 "${SysPlistsDir}/CTPresetFallbacks.plist"
 "${PlistFileRegx}" EntireString ".AppleSimplifiedChineseFont-Ultralight" ".AppleJapaneseFont-Thin" "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
-chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
+chmod 755 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 #===========================================
 # Convert phase: DefaultFontFallbacks.plist
@@ -157,7 +157,7 @@ Plutil -convert xml1 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 "${PlistFileRegx}" EntireString "STHeitiSC-Light" "HiraginoSansGB-W3" "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
-chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"
+chmod 755 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 #===========================================
 # Killing Finder

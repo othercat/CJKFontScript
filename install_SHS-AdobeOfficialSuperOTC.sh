@@ -5,7 +5,7 @@
 #   @(#)  Replace System Fallbacks Font to Source Han Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Feb, 01, 2015, MST.
+#   Tested by Shiki Suen on Apr, 15, 2015, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -106,7 +106,7 @@ then
 fi
 cp "${fdrGarage}/SourceHanSans.ttc" "${LibraryFontsPath}/"
 chown root:wheel "${LibraryFontsPath}/SourceHanSans.ttc"
-chmod 644 "{LibraryFontsPath}/SourceHanSans.ttc"
+chmod 755 "{LibraryFontsPath}/SourceHanSans.ttc"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -128,7 +128,7 @@ ${PlistFileRegx} EntireString ".AppleKoreanFont" "SourceHanSansK" "${SysPlistsDi
 ${PlistFileRegx} EntireString ".AppleJapaneseFont" "SourceHanSans" "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
-chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
+chmod 755 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 #===========================================
 # Convert phase: DefaultFontFallbacks.plist
@@ -146,7 +146,7 @@ ${PlistFileRegx} EntireString "AppleSDGothicNeo-Regular" "SourceHanSansK-Regular
 ${PlistFileRegx} EntireString "HiraKakuProN-W3" "SourceHanSans-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
-chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"
+chmod 755 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 #===========================================
 # Killing Finder

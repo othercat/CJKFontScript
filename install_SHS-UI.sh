@@ -5,7 +5,7 @@
 #   @(#)  Replace System Fallbacks Font to SourceHanSansUI in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Feb, 01, 2015, MST.
+#   Tested by Shiki Suen on Apr, 15, 2015, MST.
 #   Reference: https://github.com/ShikiSuen/SourceHanSansUI
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -106,7 +106,25 @@ then
 fi
 mv -fv "${fdrGarage}/SourceHanSansUI.ttc" "${LibraryFontsPath}/"
 chown root:wheel "${LibraryFontsPath}/SourceHanSansUI.ttc"
-chmod 644 "${LibraryFontsPath}/SourceHanSansUI.ttc"
+chmod 755 "${LibraryFontsPath}/SourceHanSansUI.ttc"
+
+#================================================================================
+# Official Source Han Sans Download and Install with Correct System Permission
+#================================================================================
+
+cd "${fdrGarage}"
+
+rm -f "${fdrGarage}/SourceHanSans.ttc"
+curl -L "https://github.com/adobe-fonts/source-han-sans/raw/release/SuperOTC/SourceHanSans.ttc.zip?raw=true" -o "${fdrGarage}/SourceHanSans.zip"
+bsdtar -xvf "${fdrGarage}/SourceHanSans.zip"
+if [ ! -f "${fdrGarage}/SourceHanSans.ttc" ]
+then
+	echo "[Failed to download the latest Source Han Sans SuperOTC, ABORT MISSION.]"
+	exit
+fi
+cp "${fdrGarage}/SourceHanSans.ttc" "${LibraryFontsPath}/"
+chown root:wheel "${LibraryFontsPath}/SourceHanSans.ttc"
+chmod 755 "{LibraryFontsPath}/SourceHanSans.ttc"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -122,13 +140,13 @@ ${PlistFileRegx} "-Thin" "Font-Thin" "Font-ExtraLight" "${SysPlistsDir}/CTPreset
 ${PlistFileRegx} "-Thin" "Font-UltraLight" "Font-ExtraLight" "${SysPlistsDir}/CTPresetFallbacks.plist"
 ${PlistFileRegx} "-UltraLight" "Font-Thin" "Font-ExtraLight" "${SysPlistsDir}/CTPresetFallbacks.plist"
 ${PlistFileRegx} "-UltraLight" "Font-UltraLight" "Font-ExtraLight" "${SysPlistsDir}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" ".AdobeSHSDeskTC" "${SysPlistsDir}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" ".AdobeSHSDeskSC" "${SysPlistsDir}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleKoreanFont" ".AdobeSHSDeskK" "${SysPlistsDir}/CTPresetFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleJapaneseFont" ".AdobeSHSDesk" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" "Adobe-SHSDeskTC" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" "Adobe-SHSDeskSC" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleKoreanFont" "Adobe-SHSDeskK" "${SysPlistsDir}/CTPresetFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleJapaneseFont" "Adobe-SHSDesk" "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
-chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
+chmod 755 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 #===========================================
 # Convert phase: DefaultFontFallbacks.plist
@@ -136,17 +154,17 @@ chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 Plutil -convert xml1 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
-${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" ".AdobeSHSDeskTC" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" ".AdobeSHSDeskSC" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleKoreanFont" ".AdobeSHSDeskK" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString ".AppleJapaneseFont" ".AdobeSHSDesk" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString "STHeitiTC-Light" ".AdobeSHSDeskTC-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString "STHeitiSC-Light" ".AdobeSHSDeskSC-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString "AppleSDGothicNeo-Regular" ".AdobeSHSDeskK-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
-${PlistFileRegx} EntireString "HiraKakuProN-W3" ".AdobeSHSDesk-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleTraditionalChineseFont" "Adobe-SHSDeskTC" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleSimplifiedChineseFont" "Adobe-SHSDeskSC" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleKoreanFont" "Adobe-SHSDeskK" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString ".AppleJapaneseFont" "Adobe-SHSDesk" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "STHeitiTC-Light" "Adobe-SHSDeskTC-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "STHeitiSC-Light" "Adobe-SHSDeskSC-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "AppleSDGothicNeo-Regular" "Adobe-SHSDeskK-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
+${PlistFileRegx} EntireString "HiraKakuProN-W3" "Adobe-SHSDesk-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
-chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"
+chmod 755 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 #===========================================
 # Killing Finder
