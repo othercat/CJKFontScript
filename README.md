@@ -43,7 +43,7 @@ We use modified hidden font "SourceHanSansUI" separate from the Adobe's official
 //Current release is compatible with Microsoft Office 2016 and Logic Pro X.
 
 </code></pre>
-Run `sudo bash restore.sh` to restore fonts and settings from the backups created by installer scripts.
+Run `sudo bash restore.sh` to restore fonts and settings from the most recent backup created by installer scripts.
 
 All of these scripts here need to run with `sudo` to gain administrative permissions.
 
