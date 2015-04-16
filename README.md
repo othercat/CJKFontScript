@@ -1,5 +1,6 @@
 CJKFontScript
 =============
+This repo is currently exclusive for OS X Yosemite.
 
 > <b>Please BE AWARE that Automatic De-Fib scripts were introduced since 2014Oct26(GMT+8),</b>
 
