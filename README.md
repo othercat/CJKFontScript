@@ -63,8 +63,6 @@ These updates were introduced regarding to the wave 5:
 
 2. Since OS X Yosemite's stable release has already been 14D131 (10.10.3) by the time this update is pushed, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
 
-3. `Not an update but one more thing to say`: I would like to hear your complaints if you use Hiragino Scripts and found any problem happened after repairing disk permissions. A GUI font must has disk permission same to `root:wheel 755`, but system's built-in disk utility could let HiraginoSansGB and Hiragino Kaku Gothic Pro (not ProN) lose such permission settings while it is repairing disk permissions. Since I have no solution regarding this hidden danger, I recommend people to manually keep their permission settings by running shell commands `sudo chown root:wheel /Library/Fonts/FONTNAME.otf` and `sudo chmod 755 /Library/Fonts/FONTNAME.otf` via Terminal.app until new ideas come out.
-
 ####2015Feb01(MST) Wave 5, Codename "Ogiso Setsuna" (小木曽雪菜)####
 These updates were introduced regarding to the wave 4:
 
