@@ -57,6 +57,10 @@ These updates were introduced regarding to the wave 6:
 
 3. Source Han Sans 1.002 is coming, we won't remove bash scripts regarding SHS installations until our next major update (codename "Ochiai Yuriko"). But, we removed all other bash scripts and change Hiragino installation bash script into bash bootstrapper: it runs in unattended mode, download the Hiragino Chinese GUI Font Modification Package silently, install it silently, only prompts you just before the final reboot. If you still need to see those old bash scripts, please check the commit history of this repo.
 
+4. From now on, all packages provided in this repo supports full-installation-via-terminal, and you could do unattended installation just as what install_Hiragino.sh does in this current update.
+
+5. Hiragino Sans Old Typeface is introduced in the current Hiragino Chinese GUI Font Modification Package, and its modifier's name is written in the package (that name won't display if your system's GUI language is neither Simplified nor Traditional Chinese).
+
 ####2015Apr15(MST) Wave 6, Codename "Seto Hiroko" (瀬戸紘子)####
 These updates were introduced regarding to the wave 5:
 
