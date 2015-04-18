@@ -5,7 +5,7 @@
 #   @(#)  Replace System Fallbacks Font to Source Han Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on Apr, 15, 2015, MST.
+#   Tested by Shiki Suen on Apr, 18, 2015, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -14,7 +14,6 @@
 #============================================
 
 fdrGarage="/tmp/FontInstallationWorkingDir"
-BackupPath="${HOME}/.FactorialCJKFontSettingsBackup"
 SystemFontsPath="/System/Library/Fonts"
 LibraryFontsPath="/Library/Fonts"
 SysPlistsDir="/System/Library/Frameworks/CoreText.framework/Versions/A/Resources/"
@@ -66,30 +65,6 @@ fi
 
 chmod +x "${PlistFileRegx}"
 
-#=======================================
-# Backup Plists
-#=======================================
-
-if [ ! -d "${BackupPath}" ]
-then
-	echo "[Making Backup directory ${BackupPath}.]"
-	mkdir "${BackupPath}"
-fi
-
-if [ -f "${BackupPath}/CTPresetFallbacks.plist.bak" ]
-then
-   mv "${BackupPath}/CTPresetFallbacks.plist.bak" "${BackupPath}/CTPresetFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
-fi
-
-cp "${SysPlistsDir}/CTPresetFallbacks.plist" "${BackupPath}/CTPresetFallbacks.plist.bak"
-
-if [ -f "${BackupPath}/DefaultFontFallbacks.plist.bak" ]
-then
-   mv "${BackupPath}/DefaultFontFallbacks.plist.bak" "${BackupPath}/DefaultFontFallbacks.plist.RenamedWhen`date +%Y%m%d_%H%M%S`.bak"
-fi
-
-cp "${SysPlistsDir}/DefaultFontFallbacks.plist" "${BackupPath}/DefaultFontFallbacks.plist.bak"
-
 #=====================================================================
 # Source Han Sans Download and Install with Correct System Permission
 #=====================================================================
@@ -106,7 +81,7 @@ then
 fi
 cp "${fdrGarage}/SourceHanSans.ttc" "${LibraryFontsPath}/"
 chown root:wheel "${LibraryFontsPath}/SourceHanSans.ttc"
-chmod 755 "{LibraryFontsPath}/SourceHanSans.ttc"
+chmod 644 "{LibraryFontsPath}/SourceHanSans.ttc"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
@@ -128,7 +103,7 @@ ${PlistFileRegx} EntireString ".AppleKoreanFont" "SourceHanSansK" "${SysPlistsDi
 ${PlistFileRegx} EntireString ".AppleJapaneseFont" "SourceHanSans" "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/CTPresetFallbacks.plist"
-chmod 755 "${SysPlistsDir}/CTPresetFallbacks.plist"
+chmod 644 "${SysPlistsDir}/CTPresetFallbacks.plist"
 
 #===========================================
 # Convert phase: DefaultFontFallbacks.plist
@@ -146,7 +121,7 @@ ${PlistFileRegx} EntireString "AppleSDGothicNeo-Regular" "SourceHanSansK-Regular
 ${PlistFileRegx} EntireString "HiraKakuProN-W3" "SourceHanSans-Regular" "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 chown root:wheel "${SysPlistsDir}/DefaultFontFallbacks.plist"
-chmod 755 "${SysPlistsDir}/DefaultFontFallbacks.plist"
+chmod 644 "${SysPlistsDir}/DefaultFontFallbacks.plist"
 
 #===========================================
 # Killing Finder
@@ -162,15 +137,15 @@ read
 killall Finder
 
 #=============================================================
-# Force Chronosphere SinoType Gothic Fonts into Backup Folder
+# Force Chronosphere SinoType Gothic Fonts into Trash
 #=============================================================
 
-mv -fv "${SystemFontsPath}/STHeiti Light.ttc" "${BackupPath}/STHeiti Light.ttc.bak"
-mv -fv "${SystemFontsPath}/STHeiti Medium.ttc" "${BackupPath}/STHeiti Medium.ttc.bak"
-mv -fv "${SystemFontsPath}/STHeiti Thin.ttc" "${BackupPath}/STHeiti Thin.ttc.bak"
-mv -fv "${SystemFontsPath}/STHeiti UltraLight.ttc" "${BackupPath}/STHeiti UltraLight.ttc.bak"
-mv -fv "${LibraryFontsPath}/华文细黑.ttf" "${BackupPath}/KabunGothic-Light.ttf.bak"
-mv -fv "${LibraryFontsPath}/华文黑体.ttf" "${BackupPath}/KabunGothic-Medium.ttf.bak"
+mv -fv "${SystemFontsPath}/STHeiti Light.ttc" "${HOME}/.Trash/STHeiti Light.ttc.bak"
+mv -fv "${SystemFontsPath}/STHeiti Medium.ttc" "${HOME}/.Trash/STHeiti Medium.ttc.bak"
+mv -fv "${SystemFontsPath}/STHeiti Thin.ttc" "${HOME}/.Trash/STHeiti Thin.ttc.bak"
+mv -fv "${SystemFontsPath}/STHeiti UltraLight.ttc" "${HOME}/.Trash/SSTHeiti UltraLight.ttc.bak"
+mv -fv "${LibraryFontsPath}/华文细黑.ttf" "${HOME}/.Trash/KabunGothic-Light.ttf.bak"
+mv -fv "${LibraryFontsPath}/华文黑体.ttf" "${HOME}/.Trash/KabunGothic-Medium.ttf.bak"
 
 #=============================================================
 # Remove Working Directory

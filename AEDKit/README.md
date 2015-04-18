@@ -1,16 +1,20 @@
 CJKFontScript - AEDKit
 =============
 
-<b>There are Defibrillator Scripts here to initialize CJK GUI font settings to Factorial Configuration.</b>
+<b>Since Apr 18, 2015, the AEDKit becomes a pkg installation package.</b> We made such decision due to our concern regarding that there are some places in the world which couldn't have stable access to GitHub… such fact may ruin the recovery process while downloading factorial font files.
 
-Please make sure your system version should match the correct De-Fib Script.
+> If you don't trust this pkg, you could either use payload extractor (or similar tools) to reverse-engineer it or don't use it.
 
-run `CJKFontInitializeToFactorial-"DFN".sh` to run De-Fib scripts by Terminal.<br>
-(the "DFN" should match the current system's build number)
+Currently, the AEDKit package is made only for OS X Yosemite.
 
-ALl of these scripts need to run with `sudo` to gain administrative permissions.
+<b>You could download this package via this URL</b>:
+<pre><code>https://github.com/othercat/CJKFontScript/raw/master/AEDKit/YosemiteFactorialChineseGUIFontRecovery.pkg</code></pre>
+If you manually install this package (not via Terminal), the installer will prompt you to reboot your Mac.
 
-<b>Always follow the following rule to run these scripts by Terminal</b>:
-<pre><code>sudo bash XXXXXXXXXX.sh</code></pre>
+<b>You could also perform unattended installation by using following Terminal command</b>:
+<pre><code>sudo curl -L $'https://github.com/othercat/CJKFontScript/raw/master/AEDKit/YosemiteFactorialChineseGUIFontRecovery.pkg' -o ~/Desktop/YosemiteFactorialChineseGUIFontRecovery.pkg
+sudo installer -pkg ~/Desktop/YosemiteFactorialChineseGUIFontRecovery.pkg -target /
+</code></pre>
+After successfully running those terminal commands above, you <b>have to reboot</b> your system as soon as possible.
 
 END.

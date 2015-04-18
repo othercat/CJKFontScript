@@ -2,36 +2,29 @@ CJKFontScript
 =============
 This repo is currently exclusive for OS X Yosemite.
 
-> <b>Please BE AWARE that Automatic De-Fib scripts were introduced since 2014Oct26(GMT+8),</b>
+Those BASH scripts provided in this GitHub repo certainly need **STABLE** access to GitHub Online. We will definitely not be responsible for any issues caused by your unstable access towards here. (That's why we introduce "packages" instead of bash scripts now, while those old bash scripts are still referable by accessing the commit history of this repo.)
 
-> You <b>should</b> run Automatic De-Fib scripts (in `AEDKit` folder) before running installer scripts here <b>if one of the following conditions have met</b>:
+> <b>Please BE AWARE that Automatic De-Fib package was introduced since 2015Apr18(MST)</b>
 
-> - Font Fallbacks are not factorial (either modified or copied from elsewhere);<br>
-> // If you want to recover modifications made by installer scripts here (Since 2014Oct26),<br>// the `restore.sh` should be your first choice (unless your backups are removed).
-- STHeiti (SinoType Sans) is removed from your system.<br>(our scripts only move SinoType Sans, a.k.a. Kabun Gothic, into a hidden backup folder)
+> You could run Automatic De-Fib package (in `AEDKit` folder) if you encountered any problem after performing font modifications towards your system.
 
-> <b>De-fib Scripts matches System's Build Number (e.g.:`14D131`, etc.).</b>
+> <b>A special case</b>: You should always run Automatic De-Fib package prior to running any installer here if it is BASH-script-only.
 
-<b>Recent update "Seto Hiroko" tested by Shiki Suen at 2015-April-15, MST.</b><br>
+<b>Recent update "Takayanagi Akira" tested by Shiki Suen at 2015-April-18, MST.</b><br>
 Minor updates may introduced, please check commit list.
-
-Please <b>make sure your plists are FACTORIAL before</b> running these installer scripts,<br> otherwise you MAY want to run De-Fib scripts at first.
 
 **Always Use `sudo bash install_XXXX.sh` to run installer scripts by Terminal.**<br>
 // You should restart all of running applications after running these scripts,<br>
 // or better close all applications except Terminal.
 
-> **Install_Hiragino.sh uses:**<br>
-`Hiragino Kaku Gothic Pro` as Traditional Chinese GUI font.<br>
+> **Install_Hiragino.sh does:**<br>
+Unattended installation, incl. Hiragino Font Package download and final reboot.<br>
+
+> **HiraginoChineseGUIFontForYosemite.pkg uses:**<br>
+`Hiragino Sans Old Typeface` as Traditional Chinese GUI font.\*<br>
 `Hiragino Sans GB` as Simplified Chinese GUI font.<br>
-<br>
-> **Install_Hiragino-ProN.sh uses:**<br>
-`Hiragino Kaku Gothic ProN` as Traditional Chinese GUI font.<br>
-`Hiragino Sans GB` as Simplified Chinese GUI font.<br>
-<br>
-> **Install_Hiragino-GBOnly.sh uses:**<br>
-`Hiragino Sans GB` as **both** Traditional and Simplified Chinese GUI font.<br>
-<br>
+\* Font modifier's name is written in the package.<br>
+
 > **For Install_SHS-AdobeOfficialSuperOTC.sh:**<br>
 Simplified Chinese GUI uses `Source Han Sans SC` as its GUI font.<br>
 Traditional Chinese GUI uses `Source Han Sans TC` as its GUI font.<br>
@@ -43,7 +36,7 @@ We use modified hidden font "SourceHanSansUI" separate from the Adobe's official
 //Current release is compatible with Microsoft Office 2016 and Logic Pro X.
 
 </code></pre>
-Run `sudo bash restore.sh` to restore fonts and settings from the most recent backup created by installer scripts.
+Since we have AEDKit package, `restore.sh` is not needed and is removed from this repo.
 
 All of these scripts here need to run with `sudo` to gain administrative permissions.
 
@@ -51,15 +44,23 @@ The `safari.css` could be used if you want Safari follows system's font fallback
 
 PlistFileRegx binary's Source Code: <https://github.com/othercat/PlistFileRegx>
 
-
 Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlists/><br><http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html>
 
 Major Update History
 =============
+####2015Apr17(MST) Wave 7, Codename "Takayanagi Akira" (高柳明)####
+These updates were introduced regarding to the wave 6:
+
+1. Apologies for introducing "755 instead of 644" privilege changes in "Seto Hiroko" update, that is not intended. I rechecked the default necesssary privilege settings used by Apple and have found that it is still 644. In this update, all 755 privilege settings are changed into 644.
+
+2. Because there are still some places in the world couldn't have stable access to GitHub, we felt worry regarding the stability of installation due to any kinds of random issues. Besides, OS X, if retail version published, will use the same set of font fallback plists until next major version of OS X. Thus, we are introducing installer packages instead of online-install bash scripts. This could save lots of time and make things easier.
+
+3. Source Han Sans 1.002 is coming, we won't remove bash scripts regarding SHS installations until our next major update (codename "Ochiai Yuriko"). But, we removed all other bash scripts and change Hiragino installation bash script into bash bootstrapper: it runs in unattended mode, download the Hiragino Chinese GUI Font Modification Package silently, install it silently, only prompts you just before the final reboot. If you still need to see those old bash scripts, please check the commit history of this repo.
+
 ####2015Apr15(MST) Wave 6, Codename "Seto Hiroko" (瀬戸紘子)####
 These updates were introduced regarding to the wave 5:
 
-1. Based on what SAIONJI Natsume (西園寺棗) reported, the previous release of SourceHanSansUI was unable to display any glyph in certain UI elements of certain apps (incl. Microsoft Office 2016, Logic Pro X, etc.). After serious investigation, we finally found out that some UI elements in OS X are unable to show any glyph via those fonts which PostScript names begin with a decimal dot (this means that such PostScript name is hidden). Thus, we changed the PostScript names of SourceHanSansUI to make sure that they couldn't be treated as hidden fonts anymore: this could let SourceHanSansUI display properly in Microsoft Office 2016 and Logic Pro X.
+1. Based on what SAIONJI Natsume reported, the previous release of SourceHanSansUI was unable to display any glyph in certain UI elements of certain apps (incl. Microsoft Office 2016, Logic Pro X, etc.). After serious investigation, we finally found out that some UI elements in OS X are unable to show any glyph via those fonts which PostScript names begin with a decimal dot (this means that such PostScript name is hidden). Thus, we changed the PostScript names of SourceHanSansUI to make sure that they couldn't be treated as hidden fonts anymore: this could let SourceHanSansUI display properly in Microsoft Office 2016 and Logic Pro X.
 
 2. Since OS X Yosemite's stable release has already been 14D131 (10.10.3) by the time this update is pushed, all concerned files in this repo and the OSXCJKFontPlists repo has been updated, incl. AEDKit Scripts.
 
@@ -108,7 +109,7 @@ directories as working directory, this may cause serious failure of downloading 
 get their job finished.
 3. Both Installer Scripts and `restore.sh` could now backup (move) and restore ttf STHeiti fonts (from `/Library/Fonts/`) correctly.
 4. Comments are written neatly among Installer Scripts and `restore.sh`.
-5. In order to let the `restore.sh` always reads the most-recent backups, We have updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
+5. In order to let the `restore.sh` always reads the most-recent backups, We updated backup methods: If most-recent backups detected while running Installer Scripts, the existed most-recent backups will be renamed by adding suffix with the current time stamp.
 6. Both Installer Scripts and `restore.sh` will let you confirm before they perform "kill-finder + clean-font-cache + force-reboot".
 7. Safari CSS file is introduced to let Apple Safari follows system's font fallback settings.
 8. We fixed all of those "IF" syntax errors which could cause failure on copying Hiragino Fonts from `/Library/Fonts/` to System Font Folder.
