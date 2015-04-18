@@ -2,6 +2,9 @@ CJKFontScript
 =============
 This repo is currently exclusive for OS X Yosemite.
 
+> Please go to the release channel if you want to find package downloads:
+> https://github.com/othercat/CJKFontScript/releases
+
 Those BASH scripts provided in this GitHub repo certainly need **STABLE** access to GitHub Online. We will definitely not be responsible for any issues caused by your unstable access towards here. (That's why we introduce "packages" instead of bash scripts now, while those old bash scripts are still referable by accessing the commit history of this repo.)
 
 > <b>Please BE AWARE that Automatic De-Fib package was introduced since 2015Apr18(MST)</b>
