@@ -18,7 +18,7 @@ then
 	exit
 fi
 
-sudo curl -L $'https://github.com/othercat/CJKFontScript/raw/master/HiraginoChineseGUIFontForYosemite.pkg' -o ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg
+sudo curl -L $'https://github.com/othercat/CJKFontScript/releases/download/Latest/HiraginoChineseGUIFontForYosemite.pkg' -o ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg
 sudo installer -pkg ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg -target /
 
 #===========================================
