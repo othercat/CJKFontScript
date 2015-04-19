@@ -81,7 +81,7 @@ then
 fi
 cp "${fdrGarage}/SourceHanSans.ttc" "${LibraryFontsPath}/"
 chown root:wheel "${LibraryFontsPath}/SourceHanSans.ttc"
-chmod 644 "{LibraryFontsPath}/SourceHanSans.ttc"
+chmod 644 "${LibraryFontsPath}/SourceHanSans.ttc"
 
 #========================================
 # Convert phase: CTPresetFallbacks.plist
