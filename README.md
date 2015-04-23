@@ -2,7 +2,7 @@ CJKFontScript
 =============
 This repo is currently exclusive for OS X Yosemite.
 
-> Please go to the release channel if you want to find package downloads:
+> Please go to the **release channel** if you want to find **package downloads**:
 > https://github.com/othercat/CJKFontScript/releases
 
 Those BASH scripts provided in this GitHub repo certainly need **STABLE** access to GitHub Online. We will definitely not be responsible for any issues caused by your unstable access towards here. (That's why we introduce "packages" instead of bash scripts now, while those old bash scripts are still referable by accessing the commit history of this repo.)
@@ -13,20 +13,12 @@ Those BASH scripts provided in this GitHub repo certainly need **STABLE** access
 
 > <b>A special case</b>: You should always run Automatic De-Fib package prior to running any installer here if it is BASH-script-only.
 
-<b>Recent update "Takayanagi Akira" tested by Shiki Suen at 2015-April-18, MST.</b><br>
+<b>Recent update "Ochiai Yuriko" tested by Shiki Suen at 2015-April-18, MST.</b><br>
 Minor updates may introduced, please check commit list.
 
 **Always Use `sudo bash install_XXXX.sh` to run installer scripts by Terminal.**<br>
 // You should restart all of running applications after running these scripts,<br>
 // or better close all applications except Terminal.
-
-> **Install_Hiragino.sh does:**<br>
-Unattended installation, incl. Hiragino Font Package download and final reboot.<br>
-
-> **HiraginoChineseGUIFontForYosemite.pkg uses:**<br>
-`Hiragino Sans Old Typeface` as Traditional Chinese GUI font.\*<br>
-`Hiragino Sans GB` as Simplified Chinese GUI font.<br>
-\* Font modifier's name is written in the package.<br>
 
 > **For Install_SHS-AdobeOfficialSuperOTC.sh:**<br>
 Simplified Chinese GUI uses `Source Han Sans SC` as its GUI font.<br>
@@ -34,8 +26,19 @@ Traditional Chinese GUI uses `Source Han Sans TC` as its GUI font.<br>
 Korean GUI uses `Source Han Sans K` as its GUI font.<br>
 Japanese GUI uses `Source Han Sans` as its GUI font.<br>
 <br>
-> **For Install_SHS-UI.sh:**<br>
-We use modified hidden font "SourceHanSansUI" separate from the Adobe's official build in order to deal with the bug that OS X never read LineGap in some cases (e.g. Filename under icons in Finder). Compare to the previous "SHSDeskInterface", this **doesn't need original CJK fonts' absence** `unless it is specified by the apps you are using (that's why we still move STHeiti away via the installation script)`. The factorial font plists must be modified to fit this fontset, and the installation script could finish that (just like what the script files do for Hiragino fonts above). <br>//More Intel: https://github.com/ShikiSuen/SourceHanSansUI<br>
+> **Install_Hiragino.sh does:**<br>
+Unattended installation, incl. Hiragino Font Package download and final reboot.<br>
+<br>
+> **Install_SHS-UI.sh does:**<br>
+Unattended installation, incl. SHS-UI Font Package download and final reboot.<br>
+<br>
+> **Regarding HiraginoChineseGUIFontForYosemite.pkg, it uses:**<br>
+`Hiragino Sans Old Typeface` as Traditional Chinese GUI font.\*<br>
+`Hiragino Sans GB` as Simplified Chinese GUI font.<br>
+\* Font modifier's name is written in the package.<br>
+<br>
+> **Regarding SHSUI-GUIFontForYosemite.pkg:**<br>
+We use modified hidden font "SourceHanSansUI" separate from the Adobe's official build in order to deal with the bug that OS X never read LineGap in some cases (e.g. Filename under icons in Finder). Compare to the previous "SHSDeskInterface", this doesn't need original CJK fonts' absence `unless it is specified by the apps you are using (that's why we still move STHeiti away via the installation script)`. The factorial font plists must be modified to fit this fontset, and the installation package will apply the correctly modified plists on your system (just like what Hiragino Font Package does above). <br>//More Intel: https://github.com/ShikiSuen/SourceHanSansUI<br>
 //Current release is compatible with Microsoft Office 2016 and Logic Pro X.
 
 </code></pre>
@@ -51,6 +54,17 @@ Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlist
 
 Major Update History
 =============
+####2015Apr17(MST) Wave 8, Codename "Ochiai Yuriko" (落合由里子)####
+These updates were introduced regarding to the wave 7:
+
+1. This update is intended to let SourceHanSansUI follow up with Adobe Official SHS 1.002 update, but we had found a problem regarding exaggerated output file size of SourceHanSansUI during its SuperOTC compilation. Ken Lunde pointed out that it is necessary to do master compilation regarding some of those subfonts (which needs lots of hours per font file). Fortunately, we had figured out a way to compile those important subfonts simultaneously (which saved us days of time). Such fact made this release available much earlier than what we supposed.
+
+2. Any font installation packages who removes STHeiti completely from the system will now move them into `~/.Trash` folder in lieu of their removal. Let users decide whether remove or not.
+
+3. SourceHanSansUI will become an offline installation package called "SHS-UI CJK GUI Font Modification Package", just as how the Hiragino Chinese GUI Font Modification made. 
+
+4. Till now, there will be only one installation script available regarding Source Han Sans Official SuperOTC installation. Thanks to @BlackGear who pointed out that there's a missing token in this script, it is fixed in this update.
+
 ####2015Apr17(MST) Wave 7, Codename "Takayanagi Akira" (高柳明)####
 These updates were introduced regarding to the wave 6:
 
@@ -99,7 +113,7 @@ These updates were introduced regarding to the wave 2:
 3. AEDKit Scripts and `restore.sh` are updated with SHSDeskInterface's removal introduced.
 
 ####2014Oct26(MST) Wave 2, Codename "Touma Kazusa" (冬馬和紗)####
-These bug fixes were introduced regarding to the First "Stable" Release:
+These bug fixes were introduced regarding to the wave1:
 
 1. We changed constant of PlistRegEx into variable to make sure PlistRegEx will be downloaded to the Working Directory, not the User Root folder `./`.
 2. MD5 CheckSum process of PlistRegEx has been introduced.

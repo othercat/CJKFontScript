@@ -1,10 +1,10 @@
 #!/bin/bash
 #   Hiragino Sans Deployment Bootstrapper.
-#   Download the latest Hiragino Chinese GUI Font Package for Yosemite.
+#   Download the latest Hiragino Chinese GUI Font Modifications Package for Yosemite.
 #   (Simplified / Traditional Chinese use Hiragino Sans GB / Old Typeface)
 #   @(#)  Replace System Fallbacks Font to Hiragino Sans in the project plist.
 #   Installer made by Shiki Suen, Enjoy! 
-#   Tested by Shiki Suen on Apr, 18, 2015, MST.
+#   Tested by Shiki Suen on Apr, 23, 2015, MST.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -17,6 +17,10 @@ then
 	echo "[SUDO command needed to execute this BASH script, ABORT MISSION.]"
 	exit
 fi
+
+#==========================================================
+# Download Package and Perform Unattended Installation
+#==========================================================
 
 sudo curl -L $'https://github.com/othercat/CJKFontScript/releases/download/Latest/HiraginoChineseGUIFontForYosemite.pkg' -o ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg
 sudo installer -pkg ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg -target /
