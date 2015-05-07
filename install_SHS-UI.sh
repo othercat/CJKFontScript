@@ -3,7 +3,7 @@
 #   Download the latest SHS-UI CJK GUI Font Modification Package for Yosemite.
 #   @(#)  Replace System Fallbacks Font to SourceHanSansUI in the project plist.
 #   Installer made by Shiki Suen, Enjoy! 
-#   Tested by Shiki Suen on May, 06, 2015, GMT+8.
+#   Tested by Shiki Suen on May, 07, 2015, GMT+8.
 #   Reference: https://github.com/ShikiSuen/SourceHanSansUI
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
