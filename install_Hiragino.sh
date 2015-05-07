@@ -4,7 +4,7 @@
 #   (Simplified / Traditional Chinese use Hiragino Sans GB / Old Typeface)
 #   @(#)  Replace System Fallbacks Font to Hiragino Sans in the project plist.
 #   Installer made by Shiki Suen, Enjoy! 
-#   Tested by Shiki Suen on May, 06, 2015, GMT+8.
+#   Tested by Shiki Suen on May, 07, 2015, GMT+8.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
