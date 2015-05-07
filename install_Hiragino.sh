@@ -23,6 +23,7 @@ fi
 #==========================================================
 
 sudo curl -L $'https://github.com/othercat/CJKFontScript/releases/download/Latest/HiraginoChineseGUIFontForYosemite.pkg.zip' -o ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg.zip
+cd ~/Desktop/
 bsdtar -xvf ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg.zip
 sudo installer -pkg ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg -target /
 

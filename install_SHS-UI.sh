@@ -22,7 +22,8 @@ fi
 #==========================================================
 
 sudo curl -L $'https://github.com/othercat/CJKFontScript/releases/download/Latest/SHSUI-GUIFontForYosemite.pkg.zip' -o ~/Desktop/SHSUI-GUIFontForYosemite.pkg.zip
-bsdtar -xvf ~/Desktop/SHSUI-GUIFontForYosemite.pkg
+cd ~/Desktop/
+bsdtar -xvf ~/Desktop/SHSUI-GUIFontForYosemite.pkg.zip
 sudo installer -pkg ~/Desktop/SHSUI-GUIFontForYosemite.pkg -target /
 
 #===========================================
