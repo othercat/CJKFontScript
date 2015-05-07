@@ -2,18 +2,28 @@ CJKFontScript
 =============
 This repo is currently exclusive for OS X Yosemite.
 
-> Please go to the **release channel** if you want to find **package downloads**:
-> https://github.com/othercat/CJKFontScript/releases
+> Please go to the **release channel** if you want to find **package downloads**:<br>
+> https://github.com/othercat/CJKFontScript/releases<br>
 
-Those BASH scripts provided in this GitHub repo certainly need **STABLE** access to GitHub Online. We will definitely not be responsible for any issues caused by your unstable access towards here. (That's why we introduce "packages" instead of bash scripts now, while those old bash scripts are still referable by accessing the commit history of this repo.)
+> **Alternative Download Mirrors**:<br>
+> Baidu: http://pan.baidu.com/s/1o6kitqa<br>
+> OneDrive: http://1drv.ms/1GPNOUK<br>
 
-> <b>Please BE AWARE that Automatic De-Fib package was introduced since 2015Apr18(MST)</b>
+**Disclaimer**: 
+
+> All modifications made by the tools provided in this repo are going to modify some specific system files. This may have some risk in a general sense. Meanwhile, we are trying our best to make them safe-to-use, but it doesn't mean that we are responsible for any kind of data loss by extreme circumstances.
+
+> In some cases, the packages provided here may trigger some internal bugs of some common software (e.g.: Twitter for mac has compatibility issue with Source Han Sans, etc.)... We are definitely not responsible for such incompatible issues.
+
+> Those BASH scripts provided in this GitHub repo certainly need **STABLE** access to GitHub Online. We will definitely not be responsible for any issues caused by your unstable access towards here. (That's why we introduce "packages" instead of bash scripts now, while those old bash scripts are still referable by accessing the commit history of this repo.)
+
+**Please BE AWARE that Automatic De-Fib package was introduced since 2015Apr18(MST)**
 
 > You could run Automatic De-Fib package (in `AEDKit` folder) if you encountered any problem after performing font modifications towards your system.
 
-> <b>A special case</b>: You should always run Automatic De-Fib package prior to running any installer here if it is BASH-script-only.
+> **A special case**: You should always run Automatic De-Fib package prior to running any installer here if it is BASH-script-only.
 
-<b>Recent update "Ochiai Yuriko" tested by Shiki Suen at 2015-April-18, MST.</b><br>
+<b>Recent update "Ibata Junzou" tested by Shiki Suen at 2015-May-07, GMT+8.</b><br>
 Minor updates may introduced, please check commit list.
 
 **Always Use `sudo bash install_XXXX.sh` to run installer scripts by Terminal.**<br>
@@ -54,6 +64,13 @@ Please also take references from:<br><http://shikisuen.github.io/OSXCJKFontPlist
 
 Major Update History
 =============
+####2015MAY07(GMT+8) Wave 9, Codename "Ibata Junzou" (井端潤三)####
+These updates were introduced regarding to the wave 8:
+
+1. In the previous update, all packages requires that the target system must be client distribution. This could let the installation failed on server distributions of OS X Yosemite. In this update, this restriction does not exist. If you have met installation failure on OS X Yosemite Server, this update should solve this issue.
+
+2. In case of any unwanted data corruption while downloading, all packages are now zipped by the default archiver shipped with OS X Yosemite.
+
 ####2015Apr17(MST) Wave 8, Codename "Ochiai Yuriko" (落合由里子)####
 These updates were introduced regarding to the wave 7:
 

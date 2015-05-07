@@ -4,7 +4,7 @@
 #   (Simplified / Traditional Chinese use Hiragino Sans GB / Old Typeface)
 #   @(#)  Replace System Fallbacks Font to Hiragino Sans in the project plist.
 #   Installer made by Shiki Suen, Enjoy! 
-#   Tested by Shiki Suen on Apr, 23, 2015, MST.
+#   Tested by Shiki Suen on May, 06, 2015, GMT+8.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
@@ -22,7 +22,8 @@ fi
 # Download Package and Perform Unattended Installation
 #==========================================================
 
-sudo curl -L $'https://github.com/othercat/CJKFontScript/releases/download/Latest/HiraginoChineseGUIFontForYosemite.pkg' -o ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg
+sudo curl -L $'https://github.com/othercat/CJKFontScript/releases/download/Latest/HiraginoChineseGUIFontForYosemite.pkg.zip' -o ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg.zip
+bsdtar -xvf ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg.zip
 sudo installer -pkg ~/Desktop/HiraginoChineseGUIFontForYosemite.pkg -target /
 
 #===========================================
