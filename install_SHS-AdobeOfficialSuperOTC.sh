@@ -5,7 +5,7 @@
 #   @(#)  Replace System Fallbacks Font to Source Han Sans in the project plist.
 #   Original Script for SHS was composed by Richard Li, Modified by Shiki Suen
 #   Enjoy! 
-#   Tested by Shiki Suen on May, 06, 2015, GMT+8.
+#   Tested by Shiki Suen on May, 07, 2015, GMT+8.
 #   Reference: http://shikisuen.github.io/OSXCJKFontPlists/CTPresetFallbackAnalysis.html
 #   Latest Scripts could be found here: https://github.com/othercat/CJKFontScript
 
